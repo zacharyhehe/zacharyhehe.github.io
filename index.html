@@ -23,554 +23,527 @@
         overflow-x: hidden;
       }
 
+      /* Premium Glassmorphism */
       .glass-card {
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.05);
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.04);
       }
 
       .nature-gradient {
         background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
       }
 
-      /* Simulation Rain */
+      /* Responsive Rain Simulation */
       .rain-drop {
         position: absolute;
-        background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 100%);
-        width: 2px;
-        height: 15px;
+        background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 100%);
+        width: 1.5px;
+        height: 18px;
         pointer-events: none;
         animation: fall linear infinite;
       }
 
       @keyframes fall {
-        to { transform: translateY(450px); }
+        to { transform: translateY(460px); }
       }
 
-      /* Rolling Solutions Animation */
-      .solutions-slider {
-        display: flex;
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      /* Path Illustration Steps */
-      .path-step {
-        position: relative;
-        transition: all 0.3s ease;
-      }
-      .path-line {
-        position: absolute;
-        top: 28px;
-        left: 50%;
-        width: 100%;
-        height: 2px;
-        background: repeating-linear-gradient(90deg, #cbd5e1, #cbd5e1 4px, transparent 4px, transparent 8px);
-        z-index: 0;
-      }
-
-      /* Custom Tab Style */
-      .nav-tab.active {
-        background: white;
-        color: var(--nature-green);
-        box-shadow: 0 4px 12px rgba(13, 148, 136, 0.15);
-      }
-
-      .vending-machine {
-        background: #334155;
-        border-radius: 24px;
-        padding: 24px;
-        position: relative;
-        box-shadow: inset 0 -10px 0 #1e293b;
-      }
-
-      .prize-slot {
-        background: #1e293b;
-        height: 70px;
-        border-radius: 12px;
-        margin-top: 20px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .drop-prize {
-        animation: prizeFall 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-      }
-
-      @keyframes prizeFall {
-        0% { transform: translateY(-120px); }
-        80% { transform: translateY(12px); }
-        100% { transform: translateY(0); }
-      }
-
-      /* Scrollbar tweaks */
+      /* Clean Horizontal Scrollbars */
       .custom-scroll::-webkit-scrollbar {
-        height: 6px;
+        height: 5px;
+        width: 5px;
       }
       .custom-scroll::-webkit-scrollbar-track {
-        background: rgba(255,255,255,0.1);
-        border-radius: 10px;
+        background: rgba(241, 245, 249, 0.5);
+        border-radius: 9999px;
       }
       .custom-scroll::-webkit-scrollbar-thumb {
         background: rgba(13, 148, 136, 0.2);
-        border-radius: 10px;
+        border-radius: 9999px;
       }
       .custom-scroll::-webkit-scrollbar-thumb:hover {
         background: rgba(13, 148, 136, 0.4);
       }
+
+      /* Solutions Rolling Slider */
+      .solutions-slider {
+        display: flex;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Dynamic Tab Active Styling */
+      .nav-tab.active {
+        background: white;
+        color: #0d9488;
+        box-shadow: 0 4px 14px -2px rgba(13, 148, 136, 0.15);
+        font-weight: 700;
+      }
+
+      /* Modal Vending Animations */
+      .drop-prize {
+        animation: prizeFall 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+      }
+
+      @keyframes prizeFall {
+        0% { transform: translateY(-150px) rotate(-15deg); opacity: 0; }
+        70% { transform: translateY(10px) rotate(5deg); opacity: 1; }
+        85% { transform: translateY(-5px) rotate(-2deg); }
+        100% { transform: translateY(0) rotate(0deg); }
+      }
     </style>
   </head>
-  <body class="min-h-screen flex flex-col pb-12">
+  <body class="min-h-screen flex flex-col pb-8">
 
-    <!-- Header (Widescreen Stretch) -->
-    <header class="sticky top-0 z-50 px-8 py-4 w-full">
-      <nav class="w-full glass-card rounded-[2.5rem] px-8 py-4 flex items-center justify-between">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 nature-gradient rounded-2xl flex items-center justify-center text-white shadow-lg shadow-teal-100">
-            <i class="ti ti-leaf text-2xl"></i>
+    <!-- Header Navigation Section -->
+    <header class="sticky top-0 z-50 w-full px-4 py-3 md:px-8 md:py-4">
+      <nav class="max-w-[1400px] mx-auto glass-card rounded-2xl md:rounded-[2.5rem] p-3 md:px-8 md:py-4 flex flex-col lg:flex-row items-center justify-between gap-4">
+        
+        <!-- Logo Brand -->
+        <div class="flex items-center gap-3 w-full lg:w-auto justify-center lg:justify-start">
+          <div class="w-10 h-10 md:w-12 md:h-12 nature-gradient rounded-xl md:rounded-2xl flex items-center justify-center text-white shadow-lg shadow-teal-100">
+            <i class="ti ti-leaf text-xl md:text-2xl"></i>
           </div>
-          <div>
-            <h1 class="font-black text-slate-800 text-lg tracking-tight">Eco-Ocean Lab</h1>
-            <p class="text-[10px] text-teal-600 font-bold tracking-widest uppercase hidden md:block">Urban Green Lab Hub</p>
+          <div class="text-center lg:text-left">
+            <h1 class="font-black text-slate-800 text-base md:text-lg tracking-tight">Eco-Ocean Lab</h1>
+            <p class="text-[9px] md:text-[10px] text-teal-600 font-bold tracking-widest uppercase">Urban Green Lab Hub</p>
           </div>
         </div>
-        
-        <div class="flex items-center gap-1.5 bg-slate-100 p-1.5 rounded-2xl">
-          <button onclick="switchTab('sim')" id="tab-sim-btn" class="nav-tab active px-5 py-2.5 rounded-xl text-xs font-black tracking-wider transition-all">SIMULATION</button>
-          <button onclick="switchTab('path')" id="tab-path-btn" class="nav-tab px-5 py-2.5 rounded-xl text-xs font-black tracking-wider transition-all">POLLUTION PATH</button>
-          <button onclick="switchTab('solutions')" id="tab-solutions-btn" class="nav-tab px-5 py-2.5 rounded-xl text-xs font-black tracking-wider transition-all">ECO-SOLUTIONS</button>
-          <button onclick="switchTab('shop')" id="tab-shop-btn" class="nav-tab px-5 py-2.5 rounded-xl text-xs font-black tracking-wider transition-all">SMART SHOP</button>
-          <button onclick="switchTab('quiz')" id="tab-quiz-btn" class="nav-tab px-5 py-2.5 rounded-xl text-xs font-black tracking-wider transition-all">KNOWLEDGE QUIZ</button>
+
+        <!-- Fully Responsive Navigation Tab Bar (Swipes horizontally on mobile, settles cleanly on desktop) -->
+        <div id="tab-nav-bar" class="flex items-center gap-1 bg-slate-100/80 p-1 rounded-xl md:rounded-2xl w-full lg:w-auto overflow-x-auto custom-scroll whitespace-nowrap snap-x">
+          <button onclick="switchTab('sim')" id="tab-sim-btn" class="nav-tab active px-3 py-2 md:px-5 md:py-2.5 rounded-lg md:rounded-xl text-[10px] md:text-xs font-semibold tracking-wider transition-all snap-center">RUNOFF SIM</button>
+          <button onclick="switchTab('path')" id="tab-path-btn" class="nav-tab px-3 py-2 md:px-5 md:py-2.5 rounded-lg md:rounded-xl text-[10px] md:text-xs font-semibold tracking-wider transition-all snap-center">POLLUTION PATH</button>
+          <button onclick="switchTab('solutions')" id="tab-solutions-btn" class="nav-tab px-3 py-2 md:px-5 md:py-2.5 rounded-lg md:rounded-xl text-[10px] md:text-xs font-semibold tracking-wider transition-all snap-center">ECO-SOLUTIONS</button>
+          <button onclick="switchTab('shop')" id="tab-shop-btn" class="nav-tab px-3 py-2 md:px-5 md:py-2.5 rounded-lg md:rounded-xl text-[10px] md:text-xs font-semibold tracking-wider transition-all snap-center">SMART SHOP</button>
+          <button onclick="switchTab('quiz')" id="tab-quiz-btn" class="nav-tab px-3 py-2 md:px-5 md:py-2.5 rounded-lg md:rounded-xl text-[10px] md:text-xs font-semibold tracking-wider transition-all snap-center">KNOWLEDGE QUIZ</button>
         </div>
       </nav>
     </header>
 
-    <!-- Widescreen Container: Replaced max-w-5xl with a flexible full-width layout -->
-    <main class="w-full px-8 flex-grow flex flex-col justify-start">
+    <!-- Main Workspace Dashboard Wrapper -->
+    <main class="max-w-[1400px] mx-auto px-4 md:px-8 w-full flex-grow flex flex-col justify-start">
       
-      <!-- Welcome Header (Expanded) -->
-      <div class="mb-8 flex flex-col md:flex-row items-center justify-between gap-6 bg-white/40 p-6 rounded-[2rem] border border-white/50">
-        <div>
-          <h2 class="text-3xl font-black text-slate-900 tracking-tight">Welcome, <span id="display-name" class="text-teal-600">Eco-Scientist</span>!</h2>
-          <p class="text-slate-500 mt-1 font-medium">"Slow it down. Filter it. Keep our sea clean!"</p>
+      <!-- User Engagement / Welcoming Bar -->
+      <div class="mb-6 md:mb-8 flex flex-col md:flex-row items-center justify-between gap-4 bg-white/50 p-4 md:p-6 rounded-2xl md:rounded-[2rem] border border-white/60 shadow-sm">
+        <div class="text-center md:text-left">
+          <h2 class="text-xl md:text-2xl font-black text-slate-900 tracking-tight">Welcome, <span id="display-name" class="text-teal-600">Eco-Scientist</span>!</h2>
+          <p class="text-slate-500 text-xs mt-0.5 font-medium">"Slow it down. Filter it. Keep our sea clean!"</p>
         </div>
-        <div class="flex gap-2 w-full md:w-auto shrink-0">
-          <input type="text" id="name-input" placeholder="Type your scientist name..." class="bg-white border border-slate-200 rounded-2xl px-5 py-3 text-sm focus:ring-2 focus:ring-teal-500 outline-none w-full md:w-64 font-medium">
-          <button onclick="updateName()" class="nature-gradient text-white px-6 py-3 rounded-2xl text-sm font-black shadow-lg shadow-teal-200 hover:scale-105 active:scale-95 transition-all">Save Profile</button>
+        <div class="flex gap-2 w-full md:w-auto shrink-0 max-w-sm">
+          <input type="text" id="name-input" placeholder="Enter name..." class="bg-white border border-slate-200 rounded-xl md:rounded-2xl px-4 py-2 text-xs md:text-sm focus:ring-2 focus:ring-teal-500 outline-none w-full md:w-44 font-medium shadow-sm">
+          <button onclick="updateName()" class="nature-gradient text-white px-4 py-2 rounded-xl md:rounded-2xl text-xs font-bold shadow-md shadow-teal-100 hover:opacity-95 active:scale-95 transition-all shrink-0">Save Profile</button>
         </div>
       </div>
 
-      <!-- Tabbed Sections -->
+      <!-- Content Views Panel -->
       <div id="content-area" class="w-full flex-grow">
 
-        <!-- 1. Runoff Simulator (Widescreen Optimized) -->
-        <section id="tab-sim" class="tab-view animate-in fade-in slide-in-from-bottom-4 duration-500 w-full">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <!-- 1. Interactive Runoff Simulator View -->
+        <section id="tab-sim" class="tab-view animate-in fade-in duration-300 w-full">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-stretch">
             
-            <!-- Controls Sidebar (33% Width on Widescreen) -->
+            <!-- Controls panel -->
             <div class="lg:col-span-4 flex flex-col gap-6">
-              <div class="glass-card p-8 rounded-[2.5rem] flex-grow flex flex-col justify-between">
+              <div class="glass-card p-5 md:p-6 rounded-2xl md:rounded-[2rem] flex-grow flex flex-col justify-between shadow-sm">
                 <div>
-                  <h3 class="font-extrabold text-slate-800 text-lg mb-6 flex items-center gap-3">
-                    <i class="ti ti-adjustments-horizontal text-teal-500 text-2xl"></i> Environmental Settings
+                  <h3 class="font-extrabold text-slate-800 text-sm md:text-base mb-4 md:mb-6 flex items-center gap-2">
+                    <i class="ti ti-adjustments-horizontal text-teal-500 text-lg md:text-xl"></i> Runoff Variables
                   </h3>
                   
-                  <div class="space-y-8">
+                  <div class="space-y-6">
+                    <!-- Environment Toggle buttons -->
                     <div>
-                      <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-4">Landscape Configuration</label>
-                      <div class="grid grid-cols-2 gap-4">
-                        <button onclick="setEnv('forest')" id="btn-env-forest" class="flex flex-col items-center gap-3 p-5 rounded-3xl border-2 border-teal-500 bg-teal-50 text-teal-700 transition-all shadow-sm">
-                          <i class="ti ti-trees text-3xl"></i>
-                          <span class="text-xs font-black tracking-wider">NATURAL FOREST</span>
+                      <label class="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-wider block mb-3">Landscape Configuration</label>
+                      <div class="grid grid-cols-2 gap-3">
+                        <button onclick="setEnv('forest')" id="btn-env-forest" class="flex flex-col items-center gap-2 p-3 md:p-4 rounded-xl md:rounded-2xl border-2 border-teal-500 bg-teal-50 text-teal-700 transition-all font-bold">
+                          <i class="ti ti-trees text-xl md:text-2xl"></i>
+                          <span class="text-[9px] md:text-[10px] tracking-wider uppercase">Natural Forest</span>
                         </button>
-                        <button onclick="setEnv('city')" id="btn-env-city" class="flex flex-col items-center gap-3 p-5 rounded-3xl border-2 border-transparent bg-white text-slate-400 hover:text-slate-600 transition-all shadow-sm">
-                          <i class="ti ti-building text-3xl"></i>
-                          <span class="text-xs font-black tracking-wider">URBAN CITY</span>
+                        <button onclick="setEnv('city')" id="btn-env-city" class="flex flex-col items-center gap-2 p-3 md:p-4 rounded-xl md:rounded-2xl border-2 border-transparent bg-white text-slate-400 hover:text-slate-600 transition-all font-semibold">
+                          <i class="ti ti-building text-xl md:text-2xl"></i>
+                          <span class="text-[9px] md:text-[10px] tracking-wider uppercase">Urban City</span>
                         </button>
                       </div>
                     </div>
 
+                    <!-- Storm Intensity Slider -->
                     <div>
-                      <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-4">Precipitation / Rain Intensity</label>
-                      <input type="range" id="rain-slider" min="1" max="5" value="2" oninput="updateSimulation()" class="w-full accent-teal-600 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
-                      <div class="flex justify-between text-[10px] font-black text-slate-400 mt-3 tracking-wider">
+                      <label class="text-[9px] md:text-[10px] font-black text-slate-400 uppercase tracking-wider block mb-3">Storm/Rain Intensity</label>
+                      <input type="range" id="rain-slider" min="1" max="5" value="2" oninput="updateSimulation()" class="w-full accent-teal-600 h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                      <div class="flex justify-between text-[8px] md:text-[9px] font-black text-slate-400 mt-2 tracking-wider">
                         <span>LIGHT DRIZZLE</span>
-                        <span>MODERATE</span>
                         <span>TORRENTIAL STORM</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div class="mt-8 pt-6 border-t border-slate-100">
-                  <p class="text-xs text-slate-400 font-semibold leading-relaxed">Adjust the settings above to dynamically alter soil density, pavement obstruction, and cloud loading values.</p>
+                <div class="mt-6 pt-4 border-t border-slate-100 hidden md:block">
+                  <p class="text-[10px] md:text-xs text-slate-400 font-semibold leading-relaxed">Observe how modern paving shifts absorption rates. Trees act as sponges, while concrete causes direct untreated runoff.</p>
                 </div>
               </div>
 
-              <!-- Live Environmental Stats Panel -->
-              <div class="glass-card p-8 rounded-[2.5rem] bg-teal-900 text-white shadow-xl">
+              <!-- Infiltration Stat Dashboard -->
+              <div class="glass-card p-5 md:p-6 rounded-2xl md:rounded-[2rem] bg-teal-900 text-white shadow-xl">
                 <div class="flex justify-between items-end mb-4">
                   <div>
-                    <p class="text-[10px] font-black tracking-widest opacity-60 uppercase">Soil Infiltration Rate</p>
-                    <p id="stat-infil" class="text-5xl font-black tracking-tight mt-1">50%</p>
+                    <p class="text-[8px] md:text-[9px] font-black tracking-widest opacity-60 uppercase">Soil Infiltration Rate</p>
+                    <p id="stat-infil" class="text-3xl md:text-4xl font-black mt-1">50%</p>
                   </div>
                   <div class="text-right">
-                    <p class="text-[10px] font-black tracking-widest opacity-60 uppercase">Runoff Speed</p>
-                    <p id="stat-speed" class="text-2xl font-black mt-1">Low</p>
+                    <p class="text-[8px] md:text-[9px] font-black tracking-widest opacity-60 uppercase">Runoff Speed</p>
+                    <p id="stat-speed" class="text-lg md:text-xl font-black mt-1">Low</p>
                   </div>
                 </div>
-                <div class="h-2.5 bg-white/10 rounded-full overflow-hidden">
+                <div class="h-1.5 bg-white/10 rounded-full overflow-hidden">
                   <div id="infil-bar" class="h-full bg-teal-400 transition-all duration-700 rounded-full" style="width: 50%"></div>
                 </div>
               </div>
             </div>
 
-            <!-- Immersive Simulator Screen (66% Width on Widescreen) -->
-            <div class="lg:col-span-8 relative min-h-[500px] rounded-[3rem] overflow-hidden bg-slate-950 border-8 border-white shadow-2xl flex flex-col justify-between p-10">
-              <div id="rain-container" class="absolute inset-0 z-20 pointer-events-none"></div>
-              
-              <div class="absolute inset-0 z-10 bg-gradient-to-t from-slate-950 via-slate-950/40 to-slate-950/10 pointer-events-none"></div>
+            <!-- Simulation live renderer -->
+            <div class="lg:col-span-8 relative min-h-[300px] md:min-h-[450px] rounded-2xl md:rounded-[2.5rem] overflow-hidden bg-slate-950 border-2 md:border-4 border-white shadow-xl flex flex-col justify-between p-5 md:p-8">
+              <div id="rain-container" class="absolute inset-0 z-20 pointer-events-none overflow-hidden"></div>
+              <div class="absolute inset-0 z-10 bg-gradient-to-t from-slate-950 via-slate-950/20 to-slate-950/10 pointer-events-none"></div>
 
               <div class="relative z-30 flex justify-between items-start">
-                <span id="env-badge" class="px-5 py-2 bg-white/10 backdrop-blur-md rounded-full text-xs font-black text-teal-300 border border-white/20 tracking-wider">NATURAL FOREST</span>
-                <div id="ocean-status" class="flex items-center gap-3 bg-white/10 backdrop-blur-md px-5 py-2 rounded-full border border-white/20">
-                  <div class="w-3.5 h-3.5 rounded-full bg-teal-400 animate-pulse"></div>
-                  <span class="text-xs font-black text-white uppercase tracking-wider">Ocean Status: Clear</span>
+                <span id="env-badge" class="px-3 py-1 bg-white/10 backdrop-blur rounded-full text-[9px] md:text-[10px] font-black text-teal-300 border border-white/20 tracking-wider">NATURAL FOREST</span>
+                <div id="ocean-status" class="flex items-center gap-2 bg-white/10 backdrop-blur px-3 py-1 rounded-full border border-white/20">
+                  <div class="w-2.5 h-2.5 rounded-full bg-teal-400 animate-pulse"></div>
+                  <span class="text-[9px] md:text-[10px] font-black text-white uppercase tracking-wider">Ocean: Clear</span>
                 </div>
               </div>
 
-              <div class="relative z-30 max-w-lg mt-auto">
-                <h4 id="env-title" class="text-4xl font-black text-white leading-tight tracking-tight">Nature's Sponge</h4>
-                <p id="env-desc" class="text-slate-300 text-sm mt-4 leading-relaxed font-medium">In a forest, rain sinks into the soil like a sponge, nourishing trees and recharging groundwater.</p>
+              <div class="relative z-30 max-w-md mt-auto">
+                <h4 id="env-title" class="text-xl md:text-3xl font-black text-white tracking-tight">Nature's Sponge</h4>
+                <p id="env-desc" class="text-slate-300 text-xs mt-2 md:mt-3 leading-relaxed font-medium">In a forest, rain sinks into the soil like a sponge, nourishing trees and recharging groundwater.</p>
               </div>
 
-              <!-- Soil/Concrete Layer Visualizer -->
-              <div id="landscape-visual" class="absolute bottom-0 inset-x-0 h-40 transition-all duration-700 bg-teal-800 z-10">
-                <div id="flow-animation" class="absolute top-0 inset-x-0 h-2 bg-teal-400/40 animate-pulse"></div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 2. Path of Pollution (Widescreen Journey Illustrations) -->
-        <section id="tab-path" class="tab-view hidden animate-in fade-in slide-in-from-bottom-4 duration-500 w-full">
-          <div class="glass-card p-12 rounded-[3rem]">
-            <div class="text-center mb-12">
-              <span class="text-[10px] font-black text-teal-600 tracking-widest uppercase bg-teal-50 px-4 py-1.5 rounded-full">Environmental Forensic Map</span>
-              <h3 class="text-4xl font-black text-slate-800 mt-4 tracking-tight">The Path of Pollution</h3>
-              <p class="text-slate-500 mt-2 max-w-2xl mx-auto font-medium">Daily household routines feed chemicals into the ocean ecosystem. Click a category below to load the complete visual illustration path.</p>
-            </div>
-
-            <div class="flex justify-center gap-4 mb-12">
-              <button onclick="renderPath('detergent')" class="px-8 py-4 rounded-2xl bg-teal-50 border border-teal-100 text-teal-700 font-extrabold text-sm hover:scale-105 hover:shadow-md transition-all">Household Detergents</button>
-              <button onclick="renderPath('fertilizer')" class="px-8 py-4 rounded-2xl bg-amber-50 border border-amber-100 text-amber-700 font-extrabold text-sm hover:scale-105 hover:shadow-md transition-all">Agricultural Fertilizers</button>
-              <button onclick="renderPath('pesticide')" class="px-8 py-4 rounded-2xl bg-rose-50 border border-rose-100 text-rose-700 font-extrabold text-sm hover:scale-105 hover:shadow-md transition-all">Lawn Pesticides</button>
-            </div>
-
-            <div id="path-illustration-box" class="bg-slate-50 rounded-[2.5rem] p-12 border border-slate-100 min-h-[350px] flex items-center justify-center shadow-inner">
-              <div class="text-center text-slate-300 max-w-md">
-                <i class="ti ti-map-2 text-7xl block mb-4 text-slate-200"></i>
-                <p class="font-black uppercase tracking-widest text-xs text-slate-400">Select a pollutant category to chart its environmental trajectory</p>
+              <!-- Interactive soil layout graphic -->
+              <div id="landscape-visual" class="absolute bottom-0 inset-x-0 h-24 md:h-32 transition-all duration-700 bg-emerald-800 z-10">
+                <div class="absolute top-0 inset-x-0 h-1.5 bg-teal-400/30 animate-pulse"></div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- 3. Solutions (Full-Width Rolling Slider) -->
-        <section id="tab-solutions" class="tab-view hidden animate-in fade-in slide-in-from-bottom-4 duration-500 w-full">
-           <div class="flex flex-col md:flex-row items-end justify-between gap-6 mb-8">
-             <div>
-               <span class="text-[10px] font-black text-teal-600 tracking-widest uppercase bg-teal-50 px-4 py-1.5 rounded-full">Engineering & Ecosystems</span>
-               <h3 class="text-4xl font-black text-slate-800 mt-4 tracking-tight">Nature-Based Engineering Solutions</h3>
-               <p class="text-slate-500 mt-1 font-medium">Discover three smart infrastructure tools that slow down and purify surface storm runoffs.</p>
-             </div>
-             <div class="flex gap-3">
-               <button onclick="rollSolution(-1)" class="w-14 h-14 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-600 hover:text-teal-600 hover:border-teal-300 shadow-sm transition-all"><i class="ti ti-chevron-left text-xl"></i></button>
-               <button onclick="rollSolution(1)" class="w-14 h-14 rounded-full border border-slate-200 bg-white flex items-center justify-center text-slate-600 hover:text-teal-600 hover:border-teal-300 shadow-sm transition-all"><i class="ti ti-chevron-right text-xl"></i></button>
-             </div>
-           </div>
+        <!-- 2. Interactive Path of Pollution Visual Flow (Optimized for Mobile) -->
+        <section id="tab-path" class="tab-view hidden animate-in fade-in duration-300 w-full">
+          <div class="glass-card p-5 md:p-8 rounded-2xl md:rounded-[2rem]">
+            <div class="text-center mb-6 md:mb-8">
+              <span class="text-[9px] md:text-[10px] font-black text-teal-600 tracking-widest uppercase bg-teal-50 px-3 py-1 rounded-full">Environmental Journey</span>
+              <h3 class="text-2xl md:text-3xl font-black text-slate-800 mt-2.5 md:mt-3 tracking-tight">The Path of Pollution</h3>
+              <p class="text-slate-500 mt-2 max-w-xl mx-auto text-xs font-medium">Select a routine pollutant agent to trace its exact pathway from household activities down to coral habitats.</p>
+            </div>
 
-           <!-- Large Carousels Slide Screen -->
-           <div class="relative overflow-hidden rounded-[3rem] h-[450px] shadow-2xl border-4 border-white bg-white">
-             <div id="solutions-roll-container" class="solutions-slider h-full">
-                <!-- Slide 1 -->
-                <div class="min-w-full h-full p-16 flex flex-col md:flex-row items-center gap-12 bg-teal-50/70">
-                  <div class="w-40 h-40 bg-white rounded-[2.5rem] shadow-xl flex items-center justify-center text-teal-600 shrink-0 border border-teal-100">
-                    <i class="ti ti-bucket-droplet text-6xl"></i>
-                  </div>
-                  <div>
-                    <span class="px-4 py-1 bg-teal-100 text-teal-800 text-[10px] font-black rounded-full tracking-wider uppercase">Biological Filtration</span>
-                    <h4 class="text-4xl font-black text-teal-900 mt-4 tracking-tight">Rain Garden</h4>
-                    <p class="text-teal-800/80 mt-4 leading-relaxed font-medium text-lg">Shallow planted basins designed with native vegetation to intercept urban surface water. These gardens act like natural sponges and filters, utilizing root systems and engineered soil substrates to trap heavy metals, pesticides, and hydrocarbons before they can access major marine buffers.</p>
-                  </div>
-                </div>
-                <!-- Slide 2 -->
-                <div class="min-w-full h-full p-16 flex flex-col md:flex-row items-center gap-12 bg-emerald-50/70">
-                  <div class="w-40 h-40 bg-white rounded-[2.5rem] shadow-xl flex items-center justify-center text-emerald-600 shrink-0 border border-emerald-100">
-                    <i class="ti ti-trees text-6xl"></i>
-                  </div>
-                  <div>
-                    <span class="px-4 py-1 bg-emerald-100 text-emerald-800 text-[10px] font-black rounded-full tracking-wider uppercase">Riparian Buffers</span>
-                    <h4 class="text-4xl font-black text-emerald-900 mt-4 tracking-tight">Green Buffer</h4>
-                    <p class="text-emerald-800/80 mt-4 leading-relaxed font-medium text-lg">Robust bands of dense trees, shrubs, and native perennial grasses planted adjacent to streams and rivers. They create friction that slows down fast-moving storm water, allowing suspended sediment and particles to drop out of suspension while the plants absorb chemical runoff directly.</p>
-                  </div>
-                </div>
-                <!-- Slide 3 -->
-                <div class="min-w-full h-full p-16 flex flex-col md:flex-row items-center gap-12 bg-slate-100/70">
-                  <div class="w-40 h-40 bg-white rounded-[2.5rem] shadow-xl flex items-center justify-center text-slate-600 shrink-0 border border-slate-200">
-                    <i class="ti ti-box-align-bottom text-6xl"></i>
-                  </div>
-                  <div>
-                    <span class="px-4 py-1 bg-slate-200 text-slate-800 text-[10px] font-black rounded-full tracking-wider uppercase">Urban Retrofit</span>
-                    <h4 class="text-4xl font-black text-slate-900 mt-4 tracking-tight">Filter Box</h4>
-                    <p class="text-slate-700 mt-4 leading-relaxed font-medium text-lg">Highly compact engineered structures deployed adjacent to street-level storm drains. Utilizing a system of packed gravel, course filter sand, and organic bio-charcoal, these boxes physically trap heavy pollutants and absorb organic odors inside tight metropolitan concrete spaces.</p>
-                  </div>
-                </div>
-             </div>
-           </div>
+            <!-- Chemical Category Selectors -->
+            <div class="flex flex-col sm:flex-row justify-center gap-2 mb-6 md:mb-10">
+              <button onclick="renderPath('detergent')" class="px-4 py-3 md:px-6 md:py-3 rounded-xl bg-teal-50 hover:bg-teal-100 border border-teal-100 text-teal-700 font-extrabold text-xs transition-all">Laundry Detergent</button>
+              <button onclick="renderPath('fertilizer')" class="px-4 py-3 md:px-6 md:py-3 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-100 text-amber-700 font-extrabold text-xs transition-all">Agricultural Fertilizers</button>
+              <button onclick="renderPath('pesticide')" class="px-4 py-3 md:px-6 md:py-3 rounded-xl bg-rose-50 hover:bg-rose-100 border border-rose-100 text-rose-700 font-extrabold text-xs transition-all">Lawn Pesticides</button>
+            </div>
+
+            <!-- Dynamic Interactive Journey Render Block (Never squashes, stacks cleanly on mobile) -->
+            <div id="path-illustration-box" class="bg-slate-50 rounded-2xl p-5 md:p-10 border border-slate-100 min-h-[300px] flex items-center justify-center">
+              <div class="text-center text-slate-400 max-w-sm">
+                <i class="ti ti-route text-5xl md:text-6xl text-slate-300 mb-3 block"></i>
+                <p class="font-extrabold text-[10px] md:text-xs uppercase tracking-wider">Tap a pollutant above to visualize its path</p>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <!-- 4. Smart Shop (Widescreen Comparison Grid) -->
-        <section id="tab-shop" class="tab-view hidden animate-in fade-in slide-in-from-bottom-4 duration-500 w-full">
-          <div class="glass-card p-12 rounded-[3rem]">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
+        <!-- 3. Eco-Solutions Carousel (Rolling Method - Native Controls) -->
+        <section id="tab-solutions" class="tab-view hidden animate-in fade-in duration-300 w-full">
+          <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-4 mb-6">
+            <div>
+              <span class="text-[9px] md:text-[10px] font-black text-teal-600 tracking-widest uppercase bg-teal-50 px-3 py-1 rounded-full">Engineering Portfolio</span>
+              <h3 class="text-2xl md:text-3xl font-black text-slate-800 mt-2.5 md:mt-3 tracking-tight">Eco-Ecosystem Architecture</h3>
+              <p class="text-slate-500 mt-1 text-xs font-medium">Rotate through smart engineering methods that help prevent fast-moving runoff surges.</p>
+            </div>
+            <!-- Slider Indicators/Arrows -->
+            <div class="flex gap-2 self-end md:self-auto shrink-0">
+              <button onclick="rollSolution(-1)" class="w-9 h-9 md:w-11 md:h-11 rounded-xl border border-slate-200 bg-white flex items-center justify-center text-slate-600 hover:text-teal-600 hover:border-teal-300 shadow-sm transition-all"><i class="ti ti-arrow-left text-base md:text-lg"></i></button>
+              <button onclick="rollSolution(1)" class="w-9 h-9 md:w-11 md:h-11 rounded-xl border border-slate-200 bg-white flex items-center justify-center text-slate-600 hover:text-teal-600 hover:border-teal-300 shadow-sm transition-all"><i class="ti ti-arrow-right text-base md:text-lg"></i></button>
+            </div>
+          </div>
+
+          <!-- Dynamic Sliding Viewport Frame -->
+          <div class="relative overflow-hidden rounded-2xl md:rounded-[2rem] min-h-[380px] md:h-[350px] shadow-sm border border-slate-100 bg-white">
+            <div id="solutions-roll-container" class="solutions-slider h-full">
+              <!-- Slide 1 -->
+              <div class="min-w-full h-full p-6 md:p-12 flex flex-col md:flex-row items-center gap-6 md:gap-10 bg-teal-50/40">
+                <div class="w-20 h-20 md:w-28 md:h-28 bg-white rounded-2xl md:rounded-3xl shadow-sm flex items-center justify-center text-teal-600 shrink-0 border border-teal-100">
+                  <i class="ti ti-bucket-droplet text-3xl md:text-4xl"></i>
+                </div>
+                <div>
+                  <span class="px-3 py-1 bg-teal-100 text-teal-800 text-[9px] font-black rounded-full tracking-wider uppercase">Biological Filtration</span>
+                  <h4 class="text-xl md:text-2xl font-black text-teal-900 mt-2 tracking-tight">Rain Garden</h4>
+                  <p class="text-teal-800/80 mt-2 leading-relaxed font-semibold text-xs md:text-sm">Shallow planted basins designed with native vegetation to intercept urban surface water. These gardens act like natural sponges and filters, utilizing root systems and engineered soil substrates to trap heavy metals, pesticides, and hydrocarbons before they can access major marine buffers.</p>
+                </div>
+              </div>
+              <!-- Slide 2 -->
+              <div class="min-w-full h-full p-6 md:p-12 flex flex-col md:flex-row items-center gap-6 md:gap-10 bg-emerald-50/40">
+                <div class="w-20 h-20 md:w-28 md:h-28 bg-white rounded-2xl md:rounded-3xl shadow-sm flex items-center justify-center text-emerald-600 shrink-0 border border-emerald-100">
+                  <i class="ti ti-trees text-3xl md:text-4xl"></i>
+                </div>
+                <div>
+                  <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-[9px] font-black rounded-full tracking-wider uppercase">Riparian Buffers</span>
+                  <h4 class="text-xl md:text-2xl font-black text-emerald-900 mt-2 tracking-tight">Green Buffer</h4>
+                  <p class="text-emerald-800/80 mt-2 leading-relaxed font-semibold text-xs md:text-sm">Robust bands of dense trees, shrubs, and native perennial grasses planted adjacent to streams and rivers. They create friction that slows down fast-moving storm water, allowing suspended sediment and particles to drop out of suspension while the plants absorb chemical runoff directly.</p>
+                </div>
+              </div>
+              <!-- Slide 3 -->
+              <div class="min-w-full h-full p-6 md:p-12 flex flex-col md:flex-row items-center gap-6 md:gap-10 bg-slate-50/70">
+                <div class="w-20 h-20 md:w-28 md:h-28 bg-white rounded-2xl md:rounded-3xl shadow-sm flex items-center justify-center text-slate-600 shrink-0 border border-slate-200">
+                  <i class="ti ti-box-align-bottom text-3xl md:text-4xl"></i>
+                </div>
+                <div>
+                  <span class="px-3 py-1 bg-slate-200 text-slate-800 text-[9px] font-black rounded-full tracking-wider uppercase">Urban Retrofit</span>
+                  <h4 class="text-xl md:text-2xl font-black text-slate-900 mt-2 tracking-tight">Filter Box</h4>
+                  <p class="text-slate-700 mt-2 leading-relaxed font-semibold text-xs md:text-sm">Highly compact engineered structures deployed adjacent to street-level storm drains. Utilizing a system of packed gravel, course filter sand, and organic bio-charcoal, these boxes physically trap heavy pollutants and absorb organic odors inside tight metropolitan concrete spaces.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Smart Shop & Essential Oils Scroll Shelf -->
+        <section id="tab-shop" class="tab-view hidden animate-in fade-in duration-300 w-full">
+          <div class="glass-card p-5 md:p-8 rounded-2xl md:rounded-[2rem]">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-4">
               <div>
-                <span class="text-[10px] font-black text-teal-600 tracking-widest uppercase bg-teal-50 px-4 py-1.5 rounded-full">Consumer Choices</span>
-                <h3 class="text-4xl font-black text-slate-800 mt-4 tracking-tight">Smart Choice Shelf</h3>
-                <p class="text-slate-500 mt-1 font-medium">Select a household product shelf category below to compare synthetic hazardous formulas against Urban Green Lab's reef-safe alternatives.</p>
+                <span class="text-[9px] md:text-[10px] font-black text-teal-600 tracking-widest uppercase bg-teal-50 px-3 py-1 rounded-full">Reef-Safe Choices</span>
+                <h3 class="text-2xl md:text-3xl font-black text-slate-800 mt-2.5 md:mt-3 tracking-tight">Smart Choice Shelf</h3>
+                <p class="text-slate-500 mt-1 text-xs font-medium">Click a product to compare standard toxic formulas with green organic substitutes.</p>
               </div>
-              <div class="flex gap-3 shrink-0">
-                <div class="px-4 py-2 bg-rose-100 text-rose-600 text-xs font-black tracking-wider rounded-full">RED: AVOID TOXINS</div>
-                <div class="px-4 py-2 bg-emerald-100 text-emerald-600 text-xs font-black tracking-wider rounded-full">GREEN: CHOOSE NATURAL</div>
+              <div class="flex gap-2 text-[8px] md:text-[9px] font-black tracking-wider shrink-0">
+                <span class="px-2.5 py-1 bg-rose-100 text-rose-700 rounded-md">RED: AVOID</span>
+                <span class="px-2.5 py-1 bg-emerald-100 text-emerald-700 rounded-md">GREEN: SAFE</span>
               </div>
             </div>
 
-            <!-- Shop Items Grid (Widescreen scaled) -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-              <button onclick="shopCompare('detergent')" class="p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:border-teal-500 hover:shadow-lg transition-all flex flex-col items-center gap-3 group">
-                <div class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-teal-600 shadow-md group-hover:scale-110 transition-all border border-slate-50">
-                  <i class="ti ti-droplet text-4xl"></i>
+            <!-- Product Category Grid (Beautifully responsive, 2 cols on mobile, 4 on desktop) -->
+            <div id="shop-items-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
+              <button onclick="shopCompare('detergent')" class="p-4 md:p-6 rounded-xl md:rounded-2xl bg-slate-50 border border-slate-100 hover:border-teal-500 hover:shadow-sm transition-all flex flex-col items-center gap-2 group">
+                <div class="w-11 h-11 md:w-14 md:h-14 bg-white rounded-lg md:rounded-xl flex items-center justify-center text-teal-600 shadow-sm group-hover:scale-105 transition-all">
+                  <i class="ti ti-droplet text-xl md:text-2xl"></i>
                 </div>
-                <span class="text-sm font-black text-slate-700 tracking-tight">Laundry Detergent</span>
+                <span class="text-xs font-black text-slate-700 text-center">Laundry Detergent</span>
               </button>
-              
-              <button onclick="shopCompare('powder')" class="p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:border-teal-500 hover:shadow-lg transition-all flex flex-col items-center gap-3 group">
-                <div class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-teal-600 shadow-md group-hover:scale-110 transition-all border border-slate-50">
-                  <i class="ti ti-snowflake text-4xl"></i>
+              <button onclick="shopCompare('powder')" class="p-4 md:p-6 rounded-xl md:rounded-2xl bg-slate-50 border border-slate-100 hover:border-teal-500 hover:shadow-sm transition-all flex flex-col items-center gap-2 group">
+                <div class="w-11 h-11 md:w-14 md:h-14 bg-white rounded-lg md:rounded-xl flex items-center justify-center text-teal-600 shadow-sm group-hover:scale-105 transition-all">
+                  <i class="ti ti-snowflake text-xl md:text-2xl"></i>
                 </div>
-                <span class="text-sm font-black text-slate-700 tracking-tight">Laundry Powder</span>
+                <span class="text-xs font-black text-slate-700 text-center">Laundry Powder</span>
               </button>
-              
-              <button onclick="shopCompare('fertilizer')" class="p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:border-teal-500 hover:shadow-lg transition-all flex flex-col items-center gap-3 group">
-                <div class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-teal-600 shadow-md group-hover:scale-110 transition-all border border-slate-50">
-                  <i class="ti ti-leaf text-4xl"></i>
+              <button onclick="shopCompare('fertilizer')" class="p-4 md:p-6 rounded-xl md:rounded-2xl bg-slate-50 border border-slate-100 hover:border-teal-500 hover:shadow-sm transition-all flex flex-col items-center gap-2 group">
+                <div class="w-11 h-11 md:w-14 md:h-14 bg-white rounded-lg md:rounded-xl flex items-center justify-center text-teal-600 shadow-sm group-hover:scale-105 transition-all">
+                  <i class="ti ti-leaf text-xl md:text-2xl"></i>
                 </div>
-                <span class="text-sm font-black text-slate-700 tracking-tight">Lawn Fertilizer</span>
+                <span class="text-xs font-black text-slate-700 text-center">Lawn Fertilizer</span>
               </button>
-              
-              <button onclick="shopCompare('oil')" class="p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:border-teal-500 hover:shadow-lg transition-all flex flex-col items-center gap-3 group">
-                <div class="w-20 h-20 bg-white rounded-2xl flex items-center justify-center text-teal-600 shadow-md group-hover:scale-110 transition-all border border-slate-50">
-                  <i class="ti ti-flask text-4xl"></i>
+              <button onclick="shopCompare('oil')" class="p-4 md:p-6 rounded-xl md:rounded-2xl bg-slate-50 border border-slate-100 hover:border-teal-500 hover:shadow-sm transition-all flex flex-col items-center gap-2 group">
+                <div class="w-11 h-11 md:w-14 md:h-14 bg-white rounded-lg md:rounded-xl flex items-center justify-center text-teal-600 shadow-sm group-hover:scale-105 transition-all">
+                  <i class="ti ti-flask text-xl md:text-2xl"></i>
                 </div>
-                <span class="text-sm font-black text-slate-700 tracking-tight">Essential Oils</span>
+                <span class="text-xs font-black text-slate-700 text-center">Essential Oils</span>
               </button>
             </div>
 
-            <!-- Product Detail Comparison Area -->
-            <div id="shop-detail-panel" class="hidden animate-in slide-in-from-bottom-2 duration-300 space-y-8">
-               <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                 
-                 <!-- RED ITEM (AVOID) -->
-                 <div class="bg-rose-50/50 p-10 rounded-[2.5rem] border border-rose-100 flex flex-col justify-between shadow-sm">
-                   <div>
-                     <div class="flex items-center gap-3 mb-6">
-                       <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-rose-500 shadow-md">
-                         <i class="ti ti-alert-triangle text-2xl"></i>
-                       </div>
-                       <h5 class="font-black text-rose-900 uppercase tracking-widest text-xs">Standard Synthetic Compound</h5>
-                     </div>
-                     <h6 id="shop-red-title" class="text-2xl font-black mb-3 text-slate-800">Chemical Formula</h6>
-                     <p id="shop-red-desc" class="text-sm text-rose-700/80 leading-relaxed font-semibold"></p>
-                   </div>
-                   <div class="mt-8 p-5 bg-white border border-rose-200/50 rounded-2xl shadow-inner">
-                     <span class="text-[10px] font-black uppercase text-rose-800 block mb-2 tracking-wider">Environmental Impact Score</span>
-                     <span class="text-sm font-black text-rose-700 flex items-center gap-2">
-                       <i class="ti ti-biohazard text-lg"></i> High Aquatic Toxicity / Non-Biodegradable
-                     </span>
-                   </div>
-                 </div>
+            <!-- Comparison View (Side-by-Side on desktop, stacks on mobile without squashing) -->
+            <div id="shop-detail-panel" class="hidden animate-in slide-in-from-bottom-2 duration-300 space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                
+                <!-- RED: TOXIC FORMULA (Clickable container) -->
+                <div onclick="alert('Warning: Synthetic ingredients harm the environment. Check the green side for natural alternatives!')" class="bg-rose-50/50 p-5 md:p-6 rounded-xl md:rounded-2xl border border-rose-100 flex flex-col justify-between cursor-pointer hover:bg-rose-50 transition-all">
+                  <div>
+                    <div class="flex items-center gap-2 mb-3 md:mb-4">
+                      <i class="ti ti-alert-triangle text-lg md:text-xl text-rose-500"></i>
+                      <h4 class="font-black text-rose-900 uppercase tracking-wider text-[9px] md:text-[10px]">Standard Formulation</h4>
+                    </div>
+                    <h5 id="shop-red-title" class="text-lg md:text-xl font-black text-slate-800 mb-2">Synthetic Formula</h5>
+                    <p id="shop-red-desc" class="text-xs text-rose-700/80 leading-relaxed font-medium"></p>
+                  </div>
+                  <div class="text-[9px] font-black text-rose-600 uppercase tracking-widest mt-4">⚠️ Toxicity Warning</div>
+                </div>
 
-                 <!-- GREEN ITEM (CHOICE) -->
-                 <div class="bg-emerald-50/50 p-10 rounded-[2.5rem] border border-emerald-100 flex flex-col justify-between shadow-sm">
-                   <div>
-                     <div class="flex items-center gap-3 mb-6">
-                       <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-emerald-500 shadow-md">
-                         <i class="ti ti-check text-2xl"></i>
-                       </div>
-                       <h5 class="font-black text-emerald-900 uppercase tracking-widest text-xs">Urban Green Lab Alternative</h5>
-                     </div>
-                     <h6 id="shop-green-title" class="text-2xl font-black mb-3 text-slate-800">Organic Composition</h6>
-                     <p id="shop-green-desc" class="text-sm text-emerald-700/80 leading-relaxed font-semibold mb-6"></p>
-                   </div>
+                <!-- GREEN: ECO ALTERNATIVE -->
+                <div class="bg-emerald-50/50 p-5 md:p-6 rounded-xl md:rounded-2xl border border-emerald-100 flex flex-col justify-between shadow-sm">
+                  <div>
+                    <div class="flex items-center gap-2 mb-3 md:mb-4">
+                      <i class="ti ti-circle-check text-lg md:text-xl text-emerald-500"></i>
+                      <h4 class="font-black text-emerald-900 uppercase tracking-wider text-[9px] md:text-[10px]">Urban Green Lab Choice</h4>
+                    </div>
+                    <h5 id="shop-green-title" class="text-lg md:text-xl font-black text-slate-800 mb-2">Natural Alternative</h5>
+                    <p id="shop-green-desc" class="text-xs text-emerald-700/80 leading-relaxed font-semibold mb-4"></p>
+                  </div>
 
-                   <!-- Ingredients Panel -->
-                   <div id="non-oil-ingredients" class="border-t border-emerald-200/40 pt-6 mt-6">
-                     <h5 class="text-xs font-black text-emerald-800 uppercase tracking-wider mb-3">Reef-Safe Organic Ingredients</h5>
-                     <div id="ingredients-container" class="flex flex-wrap gap-2.5">
-                       <!-- Ingredients injected dynamically -->
-                     </div>
-                   </div>
-                 </div>
+                  <!-- Ingredients dynamic layout -->
+                  <div id="non-oil-ingredients" class="border-t border-emerald-200/40 pt-4 mt-4 hidden">
+                    <p class="text-[9px] md:text-[10px] font-black text-emerald-800 uppercase tracking-wider mb-2">Organic Recipe Ingredients:</p>
+                    <div id="ingredients-container" class="flex flex-wrap gap-1.5"></div>
+                  </div>
+                </div>
+              </div>
 
-               </div>
-
-               <!-- Scrollable Essential Oils Sub-Panel (Widescreen Optimized Scroll) -->
-               <div id="oils-scroll-panel" class="hidden bg-emerald-50/40 border border-emerald-100 p-10 rounded-[2.5rem] animate-in fade-in duration-300">
-                 <div class="flex items-center justify-between mb-8">
-                   <div>
-                     <h5 class="text-base font-black text-emerald-900 uppercase tracking-wider">Natural Aromatics Inventory</h5>
-                     <p class="text-slate-500 text-xs mt-1 font-medium">Scroll horizontally to inspect each target-specific compound recipe.</p>
-                   </div>
-                   <div class="flex gap-2 text-xs text-emerald-700 font-black bg-white border border-emerald-200 px-4 py-2 rounded-full shadow-sm">
-                     <i class="ti ti-arrows-horizontal"></i> Swipe / Horizontal Scroll
-                   </div>
-                 </div>
-
-                 <!-- Horizontal Scrollable Container -->
-                 <div class="overflow-x-auto custom-scroll pb-6 flex gap-6" id="oils-scroll-container">
-                    <!-- Dynamic Recipes will load here -->
-                 </div>
-               </div>
+              <!-- Horizontal Swipe-Friendly Essential Oils Recipes Card Row -->
+              <div id="oils-scroll-panel" class="hidden bg-emerald-50/30 border border-emerald-100 p-4 md:p-6 rounded-xl md:rounded-2xl">
+                <div class="flex items-center justify-between mb-4">
+                  <p class="text-[10px] md:text-xs font-black text-emerald-950 uppercase tracking-wider">Aromatic Application Formulas</p>
+                  <span class="text-[8px] md:text-[9px] font-bold text-slate-400 flex items-center gap-1"><i class="ti ti-arrows-horizontal"></i> Swipe to scroll</span>
+                </div>
+                
+                <!-- Dynamic cards lane -->
+                <div id="oils-scroll-container" class="overflow-x-auto custom-scroll flex gap-4 pb-4 whitespace-nowrap snap-x">
+                  <!-- Cards loaded in JS code -->
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        <!-- 5. Quiz Section (Widescreen Focused Layout) -->
-        <section id="tab-quiz" class="tab-view hidden animate-in fade-in slide-in-from-bottom-4 duration-500 w-full">
-          <div class="glass-card p-12 rounded-[3rem] max-w-4xl mx-auto shadow-2xl">
-             <div class="text-center mb-10">
-               <span class="bg-slate-100 text-slate-500 px-5 py-2 rounded-full text-xs font-black uppercase tracking-widest">ECO-GUARDIAN CERTIFICATION</span>
-               <h3 class="text-3xl font-black text-slate-800 mt-4 tracking-tight">Knowledge Assessment</h3>
-               <p class="text-slate-500 mt-2 font-medium text-sm">Pass with a perfect score of 4/4 to win the Golden Trophy, or 3/4 to win the Silver Medal!</p>
-             </div>
+        <!-- 5. Knowledge Quiz -->
+        <section id="tab-quiz" class="tab-view hidden animate-in fade-in duration-300 w-full">
+          <div class="glass-card p-5 md:p-8 rounded-2xl md:rounded-[2rem] max-w-2xl mx-auto shadow-sm">
+            <div class="text-center mb-6 md:mb-8">
+              <span class="text-[8px] md:text-[9px] font-black text-teal-600 tracking-widest uppercase bg-teal-50 px-3 py-1 rounded-full">Knowledge Check</span>
+              <h3 class="text-xl md:text-2xl font-black text-slate-800 mt-2 tracking-tight">Runoff Knowledge Quiz</h3>
+              <p class="text-slate-500 text-xs mt-1 font-semibold">Earn a perfect 4/4 score for the Golden Prize, or 3/4 for the Silver Prize!</p>
+            </div>
 
-             <div id="quiz-container" class="space-y-8">
-                <!-- Question 1 -->
-                <div class="quiz-q bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                  <div class="flex items-start gap-4">
-                    <span class="w-8 h-8 rounded-full bg-teal-500 text-white flex items-center justify-center font-black text-sm">1</span>
-                    <div class="flex-grow">
-                      <p class="font-bold text-slate-800 mb-4 text-base">How much rainwater infiltrates the ground in built-up metropolitan environments?</p>
-                      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                        <button onclick="ans(0, 0)" class="q-btn-0 w-full text-left p-4 rounded-xl border border-slate-200 text-sm hover:bg-slate-50 transition-all font-semibold">A) Over 50%</button>
-                        <button onclick="ans(0, 1)" class="q-btn-0 w-full text-left p-4 rounded-xl border border-slate-200 text-sm hover:bg-slate-50 transition-all font-semibold">B) Less than 15%</button>
-                        <button onclick="ans(0, 2)" class="q-btn-0 w-full text-left p-4 rounded-xl border border-slate-200 text-sm hover:bg-slate-50 transition-all font-semibold">C) 0% (None)</button>
-                      </div>
-                    </div>
-                  </div>
+            <div class="space-y-4 md:space-y-6">
+              <!-- Q1 -->
+              <div class="bg-slate-50/80 p-4 md:p-5 rounded-xl md:rounded-2xl border border-slate-100">
+                <p class="font-bold text-xs md:text-sm text-slate-800 mb-3">1. How much rainwater infiltrates the ground in built-up metropolitan environments?</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                  <button onclick="ans(0, 0)" class="q-btn-0 text-left p-3 rounded-xl border border-slate-200 text-xs hover:bg-slate-100 font-semibold transition-all">A) Over 50%</button>
+                  <button onclick="ans(0, 1)" class="q-btn-0 text-left p-3 rounded-xl border border-slate-200 text-xs hover:bg-slate-100 font-semibold transition-all">B) Less than 15%</button>
+                  <button onclick="ans(0, 2)" class="q-btn-0 text-left p-3 rounded-xl border border-slate-200 text-xs hover:bg-slate-100 font-semibold transition-all">C) 0% (None)</button>
                 </div>
+              </div>
 
-                <!-- Question 2 -->
-                <div class="quiz-q bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                  <div class="flex items-start gap-4">
-                    <span class="w-8 h-8 rounded-full bg-teal-500 text-white flex items-center justify-center font-black text-sm">2</span>
-                    <div class="flex-grow">
-                      <p class="font-bold text-slate-800 mb-4 text-base">Where do detergents in the ocean primarily originate from?</p>
-                      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                        <button onclick="ans(1, 0)" class="q-btn-1 w-full text-left p-4 rounded-xl border border-slate-200 text-sm hover:bg-slate-50 transition-all font-semibold">A) Industrial chemical spills</button>
-                        <button onclick="ans(1, 1)" class="q-btn-1 w-full text-left p-4 rounded-xl border border-slate-200 text-sm hover:bg-slate-50 transition-all font-semibold">B) Daily routines like laundry</button>
-                        <button onclick="ans(1, 2)" class="q-btn-1 w-full text-left p-4 rounded-xl border border-slate-200 text-sm hover:bg-slate-50 transition-all font-semibold">C) Deep-sea mining ventures</button>
-                      </div>
-                    </div>
-                  </div>
+              <!-- Q2 -->
+              <div class="bg-slate-50/80 p-4 md:p-5 rounded-xl md:rounded-2xl border border-slate-100">
+                <p class="font-bold text-xs md:text-sm text-slate-800 mb-3">2. Where do detergents in the ocean primarily originate from?</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                  <button onclick="ans(1, 0)" class="q-btn-1 text-left p-3 rounded-xl border border-slate-200 text-xs hover:bg-slate-100 font-semibold transition-all">A) Spills or factories</button>
+                  <button onclick="ans(1, 1)" class="q-btn-1 text-left p-3 rounded-xl border border-slate-200 text-xs hover:bg-slate-100 font-semibold transition-all">B) Daily routines like laundry</button>
+                  <button onclick="ans(1, 2)" class="q-btn-1 text-left p-3 rounded-xl border border-slate-200 text-xs hover:bg-slate-100 font-semibold transition-all">C) Cargo shipping lines</button>
                 </div>
+              </div>
 
-                <!-- Question 3 -->
-                <div class="quiz-q bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                  <div class="flex items-start gap-4">
-                    <span class="w-8 h-8 rounded-full bg-teal-500 text-white flex items-center justify-center font-black text-sm">3</span>
-                    <div class="flex-grow">
-                      <p class="font-bold text-slate-800 mb-4 text-base">What filter substrates do typical street Filter Boxes contain to purge storm runoffs?</p>
-                      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                        <button onclick="ans(2, 0)" class="q-btn-2 w-full text-left p-4 rounded-xl border border-slate-200 text-sm hover:bg-slate-50 transition-all font-semibold">A) Industrial soap and disinfectants</button>
-                        <button onclick="ans(2, 1)" class="q-btn-2 w-full text-left p-4 rounded-xl border border-slate-200 text-sm hover:bg-slate-50 transition-all font-semibold">B) Gravel, sand, and charcoal</button>
-                        <button onclick="ans(2, 2)" class="q-btn-2 w-full text-left p-4 rounded-xl border border-slate-200 text-sm hover:bg-slate-50 transition-all font-semibold">C) Mechanical electricity-charged filters</button>
-                      </div>
-                    </div>
-                  </div>
+              <!-- Q3 -->
+              <div class="bg-slate-50/80 p-4 md:p-5 rounded-xl md:rounded-2xl border border-slate-100">
+                <p class="font-bold text-xs md:text-sm text-slate-800 mb-3">3. What substrate ingredients do typical street Filter Boxes contain to clean storm runoff?</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                  <button onclick="ans(2, 0)" class="q-btn-2 text-left p-3 rounded-xl border border-slate-200 text-xs hover:bg-slate-100 font-semibold transition-all">A) Soap and detergents</button>
+                  <button onclick="ans(2, 1)" class="q-btn-2 text-left p-3 rounded-xl border border-slate-200 text-xs hover:bg-slate-100 font-semibold transition-all">B) Gravel, sand, and charcoal</button>
+                  <button onclick="ans(2, 2)" class="q-btn-2 text-left p-3 rounded-xl border border-slate-200 text-xs hover:bg-slate-100 font-semibold transition-all">C) Plastic filter beads</button>
                 </div>
+              </div>
 
-                <!-- Question 4 -->
-                <div class="quiz-q bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                  <div class="flex items-start gap-4">
-                    <span class="w-8 h-8 rounded-full bg-teal-500 text-white flex items-center justify-center font-black text-sm">4</span>
-                    <div class="flex-grow">
-                      <p class="font-bold text-slate-800 mb-4 text-base">What is the central environmental motto of Urban Green Lab?</p>
-                      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                        <button onclick="ans(3, 0)" class="q-btn-3 w-full text-left p-4 rounded-xl border border-slate-200 text-sm hover:bg-slate-50 transition-all font-semibold">A) Slow it down. Filter it. Keep our sea clean!</button>
-                        <button onclick="ans(3, 1)" class="q-btn-3 w-full text-left p-4 rounded-xl border border-slate-200 text-sm hover:bg-slate-50 transition-all font-semibold">B) Clean water for all generations!</button>
-                        <button onclick="ans(3, 2)" class="q-btn-3 w-full text-left p-4 rounded-xl border border-slate-200 text-sm hover:bg-slate-50 transition-all font-semibold">C) Living and working adjacent to nature.</button>
-                      </div>
-                    </div>
-                  </div>
+              <!-- Q4 -->
+              <div class="bg-slate-50/80 p-4 md:p-5 rounded-xl md:rounded-2xl border border-slate-100">
+                <p class="font-bold text-xs md:text-sm text-slate-800 mb-3">4. What is the central environmental motto of Urban Green Lab?</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                  <button onclick="ans(3, 0)" class="q-btn-3 text-left p-3 rounded-xl border border-slate-200 text-xs hover:bg-slate-100 font-semibold transition-all">A) Slow it down. Filter it. Keep our sea clean!</button>
+                  <button onclick="ans(3, 1)" class="q-btn-3 text-left p-3 rounded-xl border border-slate-200 text-xs hover:bg-slate-100 font-semibold transition-all">B) Keep oceans clear for our future!</button>
+                  <button onclick="ans(3, 2)" class="q-btn-3 text-left p-3 rounded-xl border border-slate-200 text-xs hover:bg-slate-100 font-semibold transition-all">C) Protect corals from daily trash!</button>
                 </div>
+              </div>
 
-                <button onclick="processVending()" class="w-full nature-gradient text-white py-5 rounded-2xl font-black text-lg shadow-xl shadow-teal-100 hover:scale-[1.01] active:scale-[0.99] transition-all tracking-wider">SUBMIT & UNLOCK PRIZE VENDING MACHINE</button>
-             </div>
+              <button onclick="processVending()" class="w-full nature-gradient text-white py-3.5 md:py-4 rounded-xl font-black tracking-wider hover:opacity-95 active:scale-95 transition-all text-xs md:text-sm shadow-md">SUBMIT AND VEND PRIZE CAPSULE</button>
+            </div>
           </div>
         </section>
 
       </div>
     </main>
 
-    <!-- PRIZE MODAL (Vending Machine Style) -->
-    <div id="vending-modal" class="fixed inset-0 z-[100] bg-slate-900/80 backdrop-blur-md hidden items-center justify-center p-6">
-       <div class="vending-machine w-full max-w-md overflow-hidden border-4 border-slate-700/50 shadow-2xl">
-         
-         <!-- Screen Header -->
-         <div class="bg-slate-800 rounded-xl p-4 border border-white/10 mb-4">
-           <p class="text-teal-400 font-mono text-xs uppercase tracking-widest text-center font-bold">Prize Dispensation Chamber</p>
-         </div>
-         
-         <!-- Transparent Window Showing Prize -->
-         <div class="h-56 bg-slate-700/50 rounded-xl flex items-center justify-center relative overflow-hidden">
-            <div id="vending-item" class="w-28 h-28 nature-gradient rounded-full shadow-2xl flex items-center justify-center text-white text-6xl">
-              <i id="vending-icon" class="ti ti-gift"></i>
-            </div>
-            <!-- Glass glare overlay -->
-            <div class="absolute inset-0 border-4 border-slate-800 rounded-xl pointer-events-none opacity-20 bg-gradient-to-tr from-white/20 to-transparent"></div>
-         </div>
+    <!-- PRIZE MACHINE POPUP COMPONENT (Digital Vending Machine) -->
+    <div id="vending-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md hidden z-[99] items-center justify-center p-4">
+      <div class="bg-slate-900 border-4 border-slate-800 max-w-md w-full rounded-3xl overflow-hidden shadow-2xl relative flex flex-col p-6 text-white text-center">
+        
+        <div class="flex justify-between items-center mb-4">
+          <span class="text-xs text-teal-400 font-black tracking-widest uppercase">Dispensation Complete</span>
+          <button onclick="closeVending()" class="w-7 h-7 bg-slate-800 hover:bg-slate-700 rounded-full flex items-center justify-center text-slate-400 hover:text-white transition-all"><i class="ti ti-x"></i></button>
+        </div>
 
-         <!-- Dispensing Slot (Bottom Flap) -->
-         <div class="prize-slot flex items-center justify-center">
-            <div id="dispensed-prize" class="hidden">
-               <div class="w-14 h-14 nature-gradient rounded-full border-2 border-white/20 shadow-lg flex items-center justify-center text-white text-2xl">
-                  <i id="dispensed-icon" class="ti ti-trophy"></i>
-               </div>
+        <div class="vending-machine my-4">
+          <!-- Glass display section -->
+          <div class="bg-slate-950 rounded-2xl h-44 flex flex-col items-center justify-center relative overflow-hidden border border-slate-800 p-4">
+            <div id="prize-graphic" class="drop-prize z-30">
+              <!-- Dynamically injected reward icon -->
             </div>
-         </div>
+            <!-- Internal background glow effect -->
+            <div class="absolute inset-0 bg-teal-500/10 pointer-events-none"></div>
+            <!-- Vending row slots visual -->
+            <div class="absolute top-4 inset-x-0 h-0.5 bg-white/10"></div>
+          </div>
 
-         <!-- Prize Narrative & Actions -->
-         <div class="mt-6 text-center">
-           <h4 id="vending-title" class="text-white text-2xl font-black tracking-tight">Dispensing...</h4>
-           <p id="vending-msg" class="text-slate-400 text-sm mt-2 px-6 font-medium">Validating answer key credentials...</p>
-           <button onclick="closeVending()" class="mt-6 w-full py-4 bg-teal-500 text-white rounded-xl font-black hover:bg-teal-600 active:scale-95 transition-all tracking-wider">CLAIM RECON REWARD</button>
-         </div>
-       </div>
+          <!-- Bottom Retrieval Tray -->
+          <div class="prize-slot">
+            <div class="absolute inset-x-0 bottom-0 h-4 bg-slate-950 shadow-inner"></div>
+            <div class="absolute left-1/2 -translate-x-1/2 top-4 flex items-center gap-1.5 bg-teal-950 text-teal-400 px-3 py-1.5 rounded-full text-[10px] font-black border border-teal-900 animate-pulse">
+              <i class="ti ti-package-export"></i> TAKE PRIZE CAPSULE
+            </div>
+          </div>
+        </div>
+
+        <!-- Success content text -->
+        <h3 id="prize-headline" class="text-xl md:text-2xl font-black mt-2">Prize Awarded!</h3>
+        <p id="prize-caption" class="text-xs text-slate-400 leading-relaxed mt-2 font-medium mb-4">Awesome job protecting the sea.</p>
+        
+        <button onclick="closeVending()" class="w-full nature-gradient text-white py-3 rounded-xl text-xs font-black hover:opacity-95 transition-all">Return to Lab</button>
+      </div>
     </div>
 
+    <!-- MAIN JAVASCRIPT LOGIC BLOCK -->
     <script>
       let currentTab = 'sim';
+      let currentEnv = 'forest';
       let userAnswers = [-1, -1, -1, -1];
       const correctAnswers = [1, 1, 1, 0];
       const questionsText = [
-        "How much rainwater infiltrates the ground in cities?",
-        "Where do detergents in the ocean primarily come from?",
-        "What do Filter Boxes use to clean water in tight urban spaces?",
-        "What is the slogan of Urban Green Lab?"
+        "Infiltration rate in city pavements",
+        "Source of ocean detergents",
+        "Substrate ingredients of Filter Boxes",
+        "Motto of Urban Green Lab"
       ];
 
-      // Tab Swapping
+      // Viewport responsive Switcher (fluidly adjusts real estate)
+      let isMobileMode = false;
+      function toggleViewport(mode) {
+        const wrapper = document.getElementById('viewport-wrapper');
+        const desktopBtn = document.getElementById('btn-view-desktop');
+        const mobileBtn = document.getElementById('btn-view-mobile');
+        const notch = document.getElementById('phone-notch');
+
+        if (mode === 'mobile') {
+          isMobileMode = true;
+          // Apply a clean responsive constraint without breaking margins or squashing grids
+          wrapper.className = "max-w-[420px] mx-auto border-[12px] border-slate-900 rounded-[3.5rem] shadow-2xl overflow-hidden bg-white transition-all duration-500 relative min-h-[820px] my-6 pb-6";
+          notch.classList.remove('hidden');
+          
+          desktopBtn.className = "px-4 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition-all flex items-center gap-2";
+          mobileBtn.className = "px-4 py-1.5 rounded-lg text-xs font-bold bg-teal-600 text-white transition-all flex items-center gap-2";
+        } else {
+          isMobileMode = false;
+          wrapper.className = "w-full transition-all duration-500";
+          notch.classList.add('hidden');
+          
+          desktopBtn.className = "px-4 py-1.5 rounded-lg text-xs font-bold bg-teal-600 text-white transition-all flex items-center gap-2";
+          mobileBtn.className = "px-4 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition-all flex items-center gap-2";
+        }
+
+        window.dispatchEvent(new Event('resize'));
+        if (currentTab === 'sim') updateSimulation();
+      }
+
+      // Tab Management 
       function switchTab(id) {
         document.querySelectorAll('.tab-view').forEach(t => t.classList.add('hidden'));
         document.getElementById(`tab-${id}`).classList.remove('hidden');
@@ -578,13 +551,14 @@
         document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
         document.getElementById(`tab-${id}-btn`).classList.add('active');
         currentTab = id;
-        if(id === 'sim') updateSimulation();
+        
+        if (id === 'sim') updateSimulation();
       }
 
-      // Name Persistence
+      // Profile Customization
       async function updateName() {
         const val = document.getElementById('name-input').value;
-        if(val) {
+        if (val) {
           document.getElementById('display-name').innerText = val;
           await window.sayoStorage.setItem('userName', val);
         }
@@ -592,319 +566,302 @@
 
       async function init() {
         const saved = await window.sayoStorage.getItem('userName');
-        if(saved) document.getElementById('display-name').innerText = saved;
+        if (saved) document.getElementById('display-name').innerText = saved;
         updateSimulation();
       }
 
-      // 1. Simulation Logic
+      // 1. Runoff Simulation Engine
       function setEnv(type) {
+        currentEnv = type;
         const isForest = type === 'forest';
-        document.getElementById('btn-env-forest').className = isForest ? 'flex flex-col items-center gap-3 p-5 rounded-3xl border-2 border-teal-500 bg-teal-50 text-teal-700 transition-all shadow-sm' : 'flex flex-col items-center gap-3 p-5 rounded-3xl border-2 border-transparent bg-white text-slate-400 hover:text-slate-600 transition-all shadow-sm';
-        document.getElementById('btn-env-city').className = !isForest ? 'flex flex-col items-center gap-3 p-5 rounded-3xl border-2 border-teal-500 bg-teal-50 text-teal-700 transition-all shadow-sm' : 'flex flex-col items-center gap-3 p-5 rounded-3xl border-2 border-transparent bg-white text-slate-400 hover:text-slate-600 transition-all shadow-sm';
         
+        document.getElementById('btn-env-forest').className = isForest ? 'flex flex-col items-center gap-2 p-3 md:p-4 rounded-xl md:rounded-2xl border-2 border-teal-500 bg-teal-50 text-teal-700 transition-all font-bold' : 'flex flex-col items-center gap-2 p-3 md:p-4 rounded-xl md:rounded-2xl border-2 border-transparent bg-white text-slate-400 hover:text-slate-600 transition-all font-semibold';
+        document.getElementById('btn-env-city').className = !isForest ? 'flex flex-col items-center gap-2 p-3 md:p-4 rounded-xl md:rounded-2xl border-2 border-teal-500 bg-teal-50 text-teal-700 transition-all font-bold' : 'flex flex-col items-center gap-2 p-3 md:p-4 rounded-xl md:rounded-2xl border-2 border-transparent bg-white text-slate-400 hover:text-slate-600 transition-all font-semibold';
+
         const envBadge = document.getElementById('env-badge');
         const envTitle = document.getElementById('env-title');
         const envDesc = document.getElementById('env-desc');
         const oceanStatus = document.getElementById('ocean-status');
         const visual = document.getElementById('landscape-visual');
 
-        if(isForest) {
+        if (isForest) {
           envBadge.innerText = "NATURAL FOREST";
-          envBadge.className = "px-5 py-2 bg-white/10 backdrop-blur rounded-full text-xs font-black text-teal-300 border border-white/10 tracking-wider";
+          envBadge.className = "px-3 py-1 bg-white/10 backdrop-blur rounded-full text-[9px] md:text-[10px] font-black text-teal-300 border border-white/20 tracking-wider";
           envTitle.innerText = "Nature's Sponge";
           envDesc.innerText = "In a forest, rain sinks into the soil like a sponge, nourishing trees and recharging groundwater. 50% is absorbed.";
-          oceanStatus.innerHTML = '<div class="w-3.5 h-3.5 rounded-full bg-teal-400 animate-pulse"></div><span class="text-xs font-black text-white uppercase tracking-wider">Ocean: Clear</span>';
-          visual.className = "absolute bottom-0 inset-x-0 h-40 transition-all duration-700 bg-teal-800 z-10";
-          document.getElementById('stat-infil').innerText = "50%";
-          document.getElementById('stat-speed').innerText = "Low";
-          document.getElementById('infil-bar').style.width = "50%";
+          oceanStatus.innerHTML = '<div class="w-2.5 h-2.5 rounded-full bg-teal-400 animate-pulse"></div><span class="text-[9px] md:text-[10px] font-black text-white uppercase tracking-wider">Ocean: Clear</span>';
+          visual.className = "absolute bottom-0 inset-x-0 h-24 md:h-32 transition-all duration-700 bg-emerald-800 z-10";
         } else {
-          envBadge.innerText = "URBAN METROPOLIS";
-          envBadge.className = "px-5 py-2 bg-white/10 backdrop-blur rounded-full text-xs font-black text-rose-300 border border-white/10 tracking-wider";
-          envTitle.innerText = "Impervious Obstacles";
-          envDesc.innerText = "In a city, concrete and asphalt block absorption. Less than 15% of rainwater infiltrates the ground compared to 50% in natural landscapes. Instead, water races across streets, sweeping up pollutants like oil, trash, fertilizers, and heavy metals, then surging untreated into rivers and oceans.";
-          oceanStatus.innerHTML = '<div class="w-3.5 h-3.5 rounded-full bg-red-500 animate-ping"></div><span class="text-xs font-black text-red-400 uppercase tracking-wider">Ocean Status: Suffocating</span>';
-          visual.className = "absolute bottom-0 inset-x-0 h-40 transition-all duration-700 bg-slate-700 z-10";
-          document.getElementById('stat-infil').innerText = "< 15%";
-          document.getElementById('stat-speed').innerText = "Dangerous/High";
-          document.getElementById('infil-bar').style.width = "15%";
+          envBadge.innerText = "CONCRETE CITY";
+          envBadge.className = "px-3 py-1 bg-white/10 backdrop-blur rounded-full text-[9px] md:text-[10px] font-black text-rose-300 border border-white/20 tracking-wider";
+          envTitle.innerText = "Concrete Obstruction";
+          envDesc.innerText = "In a city, concrete and asphalt block absorption. Less than 15% of rainwater infiltrates the ground. Water surges untreated into oceans.";
+          oceanStatus.innerHTML = '<div class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></div><span class="text-[9px] md:text-[10px] font-black text-rose-300 uppercase tracking-wider">Ocean: Toxic Runoff</span>';
+          visual.className = "absolute bottom-0 inset-x-0 h-24 md:h-32 transition-all duration-700 bg-slate-700 z-10";
         }
+
         updateSimulation();
       }
 
       function updateSimulation() {
-        const intensity = parseInt(document.getElementById('rain-slider').value);
-        const container = document.getElementById('rain-container');
-        container.innerHTML = '';
-        const dropsCount = intensity * 25;
-        for (let i = 0; i < dropsCount; i++) {
+        const sliderVal = document.getElementById('rain-slider').value;
+        const isForest = currentEnv === 'forest';
+        
+        const infilRate = isForest ? 50 : Math.round(15 * (1 - (sliderVal - 1) * 0.15));
+        const runSpeed = isForest ? "Low" : (sliderVal > 3 ? "Storm Surge!" : "High");
+
+        document.getElementById('stat-infil').innerText = `${infilRate}%`;
+        document.getElementById('stat-speed').innerText = runSpeed;
+        document.getElementById('infil-bar').style.width = `${infilRate}%`;
+
+        // Render Rain Drops
+        const rainContainer = document.getElementById('rain-container');
+        rainContainer.innerHTML = '';
+        const limitCount = isMobileMode ? 12 : 30;
+        const count = sliderVal * limitCount;
+        
+        for (let i = 0; i < count; i++) {
           const drop = document.createElement('div');
           drop.className = 'rain-drop';
           drop.style.left = `${Math.random() * 100}%`;
-          drop.style.top = `-${Math.random() * 20}px`;
+          drop.style.top = `${Math.random() * -60}px`;
           drop.style.animationDuration = `${0.5 + Math.random() * 0.5}s`;
-          drop.style.animationDelay = `${Math.random() * 2}s`;
-          container.appendChild(drop);
+          drop.style.animationDelay = `${Math.random() * 1.5}s`;
+          rainContainer.appendChild(drop);
         }
       }
 
-      // 2. Pollution Path illustrations
-      const pathFlows = {
-        detergent: {
-          title: "The Household Detergent Pathway",
-          icon: "ti-droplet",
-          steps: [
-            { title: "Daily Routines", desc: "Chemical detergents originate from normal human routines like laundry and washing machines.", icon: "ti-wash-dryclean" },
-            { title: "Sewer Flowout", desc: "Chemical runoff discharges untreated into the city's drainage pathways during periods of high urban flooding.", icon: "ti-binary-tree" },
-            { title: "Reef Suffocation", desc: "Phosphates in standard formulas trigger intense algal blooms that suffocates delicate coral reefs.", icon: "ti-biohazard" }
-          ]
-        },
-        fertilizer: {
-          title: "The Fertilizer Agricultural Route",
-          icon: "ti-leaf",
-          steps: [
-            { title: "Farmland & Gardens", desc: "Chemical fertilizers are loaded into landscaping beds and commercial farming systems.", icon: "ti-plant" },
-            { title: "Rainwater Scour", desc: "Heavy downpours scour soils and wash excess nitrogen/phosphorus into municipal runoffs.", icon: "ti-cloud-rain" },
-            { title: "Coral Destruction", desc: "Severe chemical loading causes rapid toxic shifts in reef waters, damaging corals with precise impact.", icon: "ti-alert-triangle" }
-          ]
-        },
-        pesticide: {
-          title: "Invisible Lawn Pesticide Poison",
-          icon: "ti-flask",
-          steps: [
-            { title: "Urban Pest Control", desc: "Pesticides are applied onto domestic lawns and city grass belts as a chemical shield.", icon: "ti-spray-can" },
-            { title: "Fast Watershed Surge", desc: "Concrete pathways prevent absorption, allowing rainfall to sweep pesticides into standard rivers.", icon: "ti-arrow-narrow-right" },
-            { title: "Marine Toxicity", desc: "Acts like an invisible poison, hitting the complex ocean reef ecosystem with terrifying precision.", icon: "ti-skull" }
-          ]
-        }
+      // 2. Pollution Flow Illustration Builder (Stackable without squishing)
+      const pathwaysData = {
+        detergent: [
+          { title: "Household routines", desc: "Chemical cleaning and laundry in bathrooms/kitchens.", icon: "ti-home" },
+          { title: "Metropolitan storm drains", desc: "Runoff carries phosphates untreated under city streets.", icon: "ti-arrow-down" },
+          { title: "Ocean coral suffocation", desc: "Chemicals cause huge algal blooms blocking marine sunlight.", icon: "ti-ripple" }
+        ],
+        fertilizer: [
+          { title: "Gardens & farms", desc: "Chemical fertilizers are spread over lawns.", icon: "ti-shovel" },
+          { title: "Rain washout", desc: "Precipitation washes chemical nitrates into urban sewers.", icon: "ti-cloud-rain" },
+          { title: "Eutrophication crisis", desc: "Algae growth chokes oxygen, causing damage easily.", icon: "ti-droplet-exclamation" }
+        ],
+        pesticide: [
+          { title: "Invisible poison", desc: "Severe pesticide application targets household bugs.", icon: "ti-virus" },
+          { title: "Toxin carriage", desc: "Storm water carries invisible chemical compounds to sea.", icon: "ti-shield-alert" },
+          { title: "Precision impact", desc: "Compounds strike delicate reefs with devastating accuracy.", icon: "ti-skull" }
+        ]
       };
 
-      function renderPath(type) {
-        const flow = pathFlows[type];
-        let html = `
-          <div class="w-full text-left animate-in fade-in slide-in-from-bottom-2 duration-300">
-            <h4 class="text-2xl font-black text-slate-800 flex items-center gap-3 mb-8">
-              <i class="ti ${flow.icon} text-teal-600 text-3xl"></i> ${flow.title}
-            </h4>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-        `;
+      function renderPath(key) {
+        const box = document.getElementById('path-illustration-box');
+        const steps = pathwaysData[key];
         
-        flow.steps.forEach((step, idx) => {
-          const isLast = idx === 2;
+        let html = `<div class="flex flex-col lg:flex-row items-center justify-between gap-6 w-full max-w-4xl text-slate-800">`;
+        
+        steps.forEach((step, i) => {
           html += `
-            <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm relative z-10 flex flex-col justify-between">
-              <div>
-                <div class="w-14 h-14 rounded-2xl bg-teal-50 flex items-center justify-center text-teal-600 text-2xl mb-6">
-                  <i class="ti ${step.icon}"></i>
-                </div>
-                <h5 class="text-lg font-black text-slate-800 mb-2">${idx + 1}. ${step.title}</h5>
-                <p class="text-sm text-slate-500 leading-relaxed font-medium">${step.desc}</p>
+            <div class="flex-1 bg-white border border-slate-100 rounded-2xl p-5 shadow-sm text-center flex flex-col items-center justify-center relative w-full">
+              <div class="w-12 h-12 bg-teal-50 text-teal-600 rounded-xl flex items-center justify-center mb-3">
+                <i class="ti ${step.icon} text-2xl"></i>
               </div>
-              ${!isLast ? `
-                <div class="hidden md:block absolute top-12 -right-6 z-20 w-12 h-12 bg-white rounded-full border border-slate-100 shadow-md flex items-center justify-center text-teal-500">
-                  <i class="ti ti-chevron-right text-lg"></i>
-                </div>
-              ` : ''}
+              <h5 class="font-extrabold text-sm text-slate-950 mb-1">Step ${i+1}: ${step.title}</h5>
+              <p class="text-[11px] text-slate-500 leading-relaxed font-medium">${step.desc}</p>
             </div>
           `;
+          if (i < steps.length - 1) {
+            // Horizontal arrow on desktop, vertical arrow on mobile
+            html += `
+              <div class="flex items-center justify-center text-slate-300">
+                <i class="ti ti-arrow-right text-2xl hidden lg:block"></i>
+                <i class="ti ti-arrow-down text-2xl block lg:hidden my-1"></i>
+              </div>
+            `;
+          }
         });
-
-        html += `</div></div>`;
-        document.getElementById('path-illustration-box').innerHTML = html;
+        
+        html += `</div>`;
+        box.innerHTML = html;
       }
 
-      // 3. Solutions Slider (Rolling mechanism)
-      let activeSlide = 0;
+      // 3. Solutions Slider (Rolling logic)
+      let slideIdx = 0;
       function rollSolution(dir) {
         const container = document.getElementById('solutions-roll-container');
-        activeSlide = (activeSlide + dir + 3) % 3;
-        container.style.transform = `translateX(-${activeSlide * 100}%)`;
+        slideIdx += dir;
+        if (slideIdx > 2) slideIdx = 0;
+        if (slideIdx < 0) slideIdx = 2;
+        container.style.transform = `translateX(-${slideIdx * 100}%)`;
       }
 
-      // 4. Smart Choice Comparison Database
-      const shopCatalog = {
+      // 4. Smart Choice Comparison Data
+      const shopDatabase = {
         detergent: {
-          title: "Laundry Detergent",
-          redTitle: "Synthetic Surfactant Formula",
-          redDesc: "Commercial bottles pack active phosphates and non-biodegradable surfactants. These chemical compounds exit sewage paths and pour directly onto coastlines, driving catastrophic algal blooms that block solar absorption.",
-          greenTitle: "Plant-Based Compound Alternative",
-          greenDesc: "An organic, zero-phosphate liquid compound built using active green elements that safeguard aquatic biosystems.",
-          ingredients: ["Baking soda", "Vinegar", "Lemon Juice", "Essential oils"]
+          redTitle: "Synthetic Chemical Detergent",
+          redDesc: "Contains phosphates and artificial brighteners. These chemicals flow down machine drains, causing rapid algal blooms that cover reefs and choke coral structures.",
+          greenTitle: "Urban Green Lab Detergent",
+          greenDesc: "A plant-based, eco-certified liquid formula that avoids artificial phosphates and harmful foaming toxins completely.",
+          ingredients: ["Baking soda", "Vinegar", "Lemon juice", "Essential oils"],
+          isOil: false
         },
         powder: {
-          title: "Laundry Powder",
-          redTitle: "Synthetic Fragrance Dust",
-          redDesc: "Typical household laundry powders are packed with synthetic chemicals and microplastic fillers. These chemical grains do not biodegrade, meaning laundry routines continuously release persistent ocean contaminants.",
-          greenTitle: "Biodegradable Organic Powder",
-          greenDesc: "A clean washing agent designed with active natural cleaning compounds that completely biodegrade in storm systems.",
-          ingredients: ["Washing soda", "Baking soda", "Essential oils"]
+          redTitle: "Synthetic Chemical Powder",
+          redDesc: "Packed with heavy synthetic chemical fillers and microplastic agents that linger in ocean waterways, getting swallowed by fragile marine species.",
+          greenTitle: "Urban Green Lab Powder",
+          greenDesc: "Highly biodegradable recipe that fully dissolves in sewers without leaving persistent chemical compounds.",
+          ingredients: ["Washing soda", "Baking soda", "Essential oils"],
+          isOil: false
         },
         fertilizer: {
-          title: "Lawn Fertilizer",
-          redTitle: "Nitrate & Phosphorous Concentrates",
-          redDesc: "Chemical lawn fertilizers are engineered using active nitrogen concentrations that wash off instantly during rainstorms. This leads to dramatic nutrient loading in bays, fueling suffocating algae blooms.",
-          greenTitle: "Slow-Release Bio-Enriched Compound",
-          greenDesc: "Our slow-release natural fertilizer bonds directly to root layers, nourishing vegetation without running off into marine buffers.",
-          ingredients: ["Crushed egg shells", "Used coffee grounds", "Cooking water"]
+          redTitle: "Chemical Nitrate Fertilizer",
+          redDesc: "Commercial agricultural formulas wash off yards immediately during rainstorms, triggering rapid ecosystem suffocation in bays.",
+          greenTitle: "Urban Green Lab Fertilizer",
+          greenDesc: "An organic compound that binds to garden dirt organically, preventing chemical runoff into surrounding rivers.",
+          ingredients: ["Crushed egg shells", "Used coffee grounds", "Cooking water"],
+          isOil: false
         },
         oil: {
-          title: "Essential Oils",
-          redTitle: "Synthetic Aromatic Chemicals",
-          redDesc: "Commercial room sprays and artificial oil scents utilize complex fossil-fuel bases and chemical formulas. These synthetics do not dissolve safely, persisting as toxic particles in local waterways.",
-          greenTitle: "Direct Botanical Extracts",
-          greenDesc: "100% natural, direct plant distillations that break down entirely and safely in any marine zone.",
+          redTitle: "Synthetic Spray Scents",
+          redDesc: "Synthetic aerosol sprays rely on chemicals and petrochemical ingredients that do not dissolve, remaining inside urban sewage buffers.",
+          greenTitle: "Urban Green Lab Aromas",
+          greenDesc: "Pure essential oils harvested straight from biological plants that break down cleanly and safely in water lines.",
           isOil: true,
           recipes: [
-            { name: "Cleaning Blend", use: "Multi-surface counter spray, natural grease breakdown, and zero-residue fresh scrubbing.", ingredients: ["Lavender", "Lemon"] },
-            { name: "Living Room Diffuser", use: "Create a refreshing, calming home atmosphere that breaks down odors cleanly without synthetic chemical vapor.", ingredients: ["Lavender", "Cedarwood"] },
-            { name: "Sleep Assistance", use: "Diffuse lightly in bedrooms or apply to linens to invoke deep, comforting rest naturally.", ingredients: ["Lavender", "Orange"] },
-            { name: "Reboot Power", use: "Inspiration, focus, mental recharge, and natural alertness boost during long work sessions.", ingredients: ["Peppermint", "Eucalyptus"] }
+            { name: "Cleaning Blend", use: "Household wiping, deodorizing, surface sanitizing.", ingredients: ["Lavender", "Lemon"] },
+            { name: "Living Room Diffuser", use: "Cozy aromatic ambiance, air cleaning.", ingredients: ["Lavender", "Cedarwood"] },
+            { name: "Sleep Assistance", use: "Lightly mist on pillows for bedtime relaxation.", ingredients: ["Lavender", "Orange"] },
+            { name: "Reboot Power", use: "Boost mental clarity, alertness, focus.", ingredients: ["Peppermint", "Eucalyptus"] }
           ]
         }
       };
 
-      function shopCompare(id) {
-        const item = shopCatalog[id];
+      function shopCompare(key) {
+        const data = shopDatabase[key];
         const panel = document.getElementById('shop-detail-panel');
-        panel.classList.remove('hidden');
+        
+        document.getElementById('shop-red-title').innerText = data.redTitle;
+        document.getElementById('shop-red-desc').innerText = data.redDesc;
+        document.getElementById('shop-green-title').innerText = data.greenTitle;
+        document.getElementById('shop-green-desc').innerText = data.greenDesc;
 
-        document.getElementById('shop-red-title').innerText = item.redTitle;
-        document.getElementById('shop-red-desc').innerText = item.redDesc;
-        document.getElementById('shop-green-title').innerText = item.greenTitle;
-        document.getElementById('shop-green-desc').innerText = item.greenDesc;
-
-        const ingredSection = document.getElementById('non-oil-ingredients');
+        const ingBlock = document.getElementById('non-oil-ingredients');
         const scrollPanel = document.getElementById('oils-scroll-panel');
 
-        if(item.isOil) {
-          ingredSection.classList.add('hidden');
+        if (data.isOil) {
+          ingBlock.classList.add('hidden');
           scrollPanel.classList.remove('hidden');
           
-          let cardsHtml = '';
-          item.recipes.forEach(rec => {
-            let badges = '';
-            rec.ingredients.forEach(i => {
-              badges += `<span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">${i}</span>`;
-            });
-
-            cardsHtml += `
-              <div class="min-w-[280px] bg-white border border-emerald-100 p-6 rounded-2xl flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
-                <div>
-                  <span class="text-[10px] font-black text-emerald-600 tracking-wider uppercase bg-emerald-50 px-2.5 py-1 rounded-full">Recipe</span>
-                  <h6 class="text-base font-black text-slate-800 mt-2">${rec.name}</h6>
-                  <p class="text-xs text-slate-500 mt-2 font-semibold whitespace-normal leading-relaxed">${rec.use}</p>
-                </div>
-                <div class="mt-4 pt-4 border-t border-slate-100">
-                  <span class="text-[10px] font-bold text-slate-400 block mb-2 uppercase">Essential Active Oils</span>
-                  <div class="flex gap-2.5 flex-wrap">${badges}</div>
-                </div>
-              </div>
-            `;
-          });
-          document.getElementById('oils-scroll-container').innerHTML = cardsHtml;
-        } else {
-          ingredSection.classList.remove('hidden');
-          scrollPanel.classList.add('hidden');
+          const tray = document.getElementById('oils-scroll-container');
+          tray.innerHTML = '';
           
-          let badges = '';
-          item.ingredients.forEach(ing => {
-            badges += `<span class="px-4 py-2 bg-emerald-100 text-emerald-800 text-xs font-black rounded-full">${ing}</span>`;
+          data.recipes.forEach(rec => {
+            const card = document.createElement('div');
+            card.className = "bg-white p-4 rounded-xl border border-emerald-100 min-w-[260px] max-w-[260px] inline-block shrink-0 shadow-sm snap-start select-none whitespace-normal";
+            
+            let badgesHtml = '';
+            rec.ingredients.forEach(ing => {
+              badgesHtml += `<span class="bg-emerald-50 text-emerald-800 text-[10px] font-black px-2.5 py-1 rounded-full border border-emerald-100">${ing}</span>`;
+            });
+            
+            card.innerHTML = `
+              <h6 class="font-extrabold text-sm text-slate-900 mb-1 flex items-center gap-1.5">
+                <i class="ti ti-droplet-filled text-emerald-500"></i> ${rec.name}
+              </h6>
+              <p class="text-[11px] text-slate-500 leading-relaxed font-semibold mb-3">${rec.use}</p>
+              <div class="flex flex-wrap gap-1">${badgesHtml}</div>
+            `;
+            tray.appendChild(card);
           });
-          document.getElementById('ingredients-container').innerHTML = badges;
+        } else {
+          scrollPanel.classList.add('hidden');
+          ingBlock.classList.remove('hidden');
+          
+          const tray = document.getElementById('ingredients-container');
+          tray.innerHTML = '';
+          
+          data.ingredients.forEach(ing => {
+            const badge = document.createElement('span');
+            badge.className = "bg-emerald-100/70 text-emerald-800 text-[10px] font-black px-3 py-1 rounded-full border border-emerald-200/50";
+            badge.innerText = ing;
+            tray.appendChild(badge);
+          });
         }
 
+        panel.classList.remove('hidden');
         panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
 
       // 5. Quiz Logic
       function ans(qIdx, optIdx) {
         userAnswers[qIdx] = optIdx;
-        document.querySelectorAll(`.q-btn-${qIdx}`).forEach((btn, idx) => {
-          if (idx === optIdx) {
-            btn.className = `q-btn-${qIdx} w-full text-left p-4 rounded-xl border-2 border-teal-500 bg-teal-50 text-teal-800 text-sm transition-all font-black`;
+        document.querySelectorAll(`.q-btn-${qIdx}`).forEach((btn, i) => {
+          if (i === optIdx) {
+            btn.className = `q-btn-${qIdx} text-left p-3 rounded-xl border-2 border-teal-500 bg-teal-50 text-teal-800 text-xs font-bold transition-all`;
           } else {
-            btn.className = `q-btn-${qIdx} w-full text-left p-4 rounded-xl border border-slate-200 text-sm hover:bg-slate-50 transition-all font-semibold`;
+            btn.className = `q-btn-${qIdx} text-left p-3 rounded-xl border border-slate-200 text-xs hover:bg-slate-100 font-semibold transition-all`;
           }
         });
       }
 
       async function processVending() {
-        if(userAnswers.includes(-1)) {
-          alert("Please complete all quiz questions before activating the vending chamber!");
+        const emptyAnswers = userAnswers.includes(-1);
+        if (emptyAnswers) {
+          alert("Please answer all questions before submitting!");
           return;
         }
 
         let score = 0;
-        userAnswers.forEach((ans, idx) => {
-          if(ans === correctAnswers[idx]) score++;
+        userAnswers.forEach((ans, i) => {
+          if (ans === correctAnswers[i]) score++;
         });
 
-        // Setup Submit Responses Array
-        const finalResponses = [];
-        userAnswers.forEach((val, idx) => {
-          finalResponses.push({
-            question: questionsText[idx],
-            answer: val === 0 ? "Option A" : (val === 1 ? "Option B" : "Option C"),
+        // Classroom submit
+        const report = {
+          responses: userAnswers.map((ans, i) => ({
+            question: questionsText[i],
+            answer: ans === 0 ? 'A' : (ans === 1 ? 'B' : 'C'),
             type: "multiple-choice"
-          });
-        });
+          }))
+        };
+        await window.sayoSubmit(report);
 
-        const modal = document.getElementById('vending-modal');
-        const vTitle = document.getElementById('vending-title');
-        const vMsg = document.getElementById('vending-msg');
-        const vIcon = document.getElementById('vending-icon');
-        const slot = document.getElementById('dispensed-prize');
-        const slotIcon = document.getElementById('dispensed-icon');
+        // Render specific prize
+        const prizeGraphic = document.getElementById('prize-graphic');
+        const headline = document.getElementById('prize-headline');
+        const caption = document.getElementById('prize-caption');
 
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
+        if (score === 4) {
+          prizeGraphic.innerHTML = `<div class="w-24 h-24 bg-gradient-to-br from-amber-300 via-amber-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg border-4 border-amber-200"><i class="ti ti-trophy text-slate-900 text-5xl"></i></div>`;
+          headline.innerText = "Golden Reef Guardian!";
+          caption.innerText = "Perfect Score 4/4! Your deep knowledge of runoff science protects coral reefs. Collect your Gold Badge.";
+          triggerConfetti(0.25); // Large confetti
+        } else if (score === 3) {
+          prizeGraphic.innerHTML = `<div class="w-24 h-24 bg-gradient-to-br from-slate-300 via-slate-400 to-slate-500 rounded-full flex items-center justify-center shadow-lg border-4 border-slate-200"><i class="ti ti-medal text-slate-900 text-5xl"></i></div>`;
+          headline.innerText = "Silver Ocean Protector!";
+          caption.innerText = "Score 3/4! Outstanding work. A little more revision and you can reach gold status. Collect your Silver Badge.";
+          triggerConfetti(0.08); // Smaller confetti
+        } else {
+          prizeGraphic.innerHTML = `<div class="w-24 h-24 bg-slate-800 rounded-full flex items-center justify-center shadow-lg border-4 border-slate-700 text-rose-500"><i class="ti ti-book text-5xl"></i></div>`;
+          headline.innerText = "Revision Needed!";
+          caption.innerText = "Score: " + score + "/4. Keep our sea clean by reading tab sheets and trying again!";
+        }
 
-        // Reset elements
-        vIcon.className = 'ti ti-gift';
-        slot.classList.add('hidden');
-        slot.classList.remove('drop-prize');
-
-        setTimeout(async () => {
-          if(score === 4) {
-            vTitle.innerText = "GRAND GOLDEN PRIZE DISPENSED!";
-            vMsg.innerText = "Excellent! Perfect 4/4 score validated. You have unlocked the Golden Reef Guardian Badge!";
-            vIcon.className = "ti ti-trophy text-amber-400";
-            slotIcon.className = "ti ti-trophy text-amber-400 text-2xl";
-            slot.classList.remove('hidden');
-            slot.classList.add('drop-prize');
-            
-            // Big Confetti
-            confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
-          } else if(score === 3) {
-            vTitle.innerText = "SILVER PRIZE DISPENSED!";
-            vMsg.innerText = "Great job! A 3/4 score validated. You have unlocked the Silver Ocean Protector Capsule!";
-            vIcon.className = "ti ti-award text-slate-300";
-            slotIcon.className = "ti ti-award text-slate-300 text-2xl";
-            slot.classList.remove('hidden');
-            slot.classList.add('drop-prize');
-
-            // Small Confetti
-            confetti({ particleCount: 50, spread: 45, origin: { y: 0.7 } });
-          } else {
-            vTitle.innerText = "DISPENSATION REFUSED";
-            vMsg.innerText = `You scored ${score}/4. A score of at least 3/4 is required to unlock a prize capsule. Revise your settings and try again!`;
-            vIcon.className = "ti ti-lock text-rose-400";
-            slot.classList.add('hidden');
-          }
-
-          // Sayosubmit
-          try {
-            await window.sayoSubmit({ responses: finalResponses });
-          } catch(e) {
-            console.warn("Classroom submit bypassed: ", e);
-          }
-        }, 1200);
+        document.getElementById('vending-modal').classList.remove('hidden');
+        document.getElementById('vending-modal').classList.add('flex');
       }
 
       function closeVending() {
-        const modal = document.getElementById('vending-modal');
-        modal.classList.remove('flex');
-        modal.classList.add('hidden');
+        document.getElementById('vending-modal').classList.add('hidden');
+        document.getElementById('vending-modal').classList.remove('flex');
+      }
+
+      function triggerConfetti(scalar) {
+        // Safe check for canvas confetti CDN loads
+        if (typeof confetti === 'function') {
+          confetti({
+            particleCount: Math.round(150 * scalar),
+            spread: scalar > 0.1 ? 80 : 50,
+            origin: { y: 0.6 },
+            colors: ['#0d9488', '#34d399', '#fbbf24', '#f59e0b']
+          });
+        }
       }
 
       window.onload = init;
