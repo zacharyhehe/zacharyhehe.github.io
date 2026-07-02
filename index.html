@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Eco-Runoff & Ocean Protection Lab</title>
+<title>URBAN GREEN LAB</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -40,11 +40,11 @@
 </style>
 </head>
 <body>
-<header class="border-b border-slate-100 bg-white sticky top-0 z-30"><div class="max-w-[1500px] mx-auto p-4 md:p-5 flex flex-col lg:flex-row gap-4 items-center justify-between"><div class="flex items-center gap-3"><div class="w-12 h-12 rounded-2xl bg-teal-700 text-white flex items-center justify-center"><i class="ti ti-leaf text-2xl"></i></div><div><h1 class="font-black text-lg leading-tight">Eco-Ocean Protection Lab</h1><p class="text-[10px] text-teal-700 font-black tracking-widest uppercase">Urban Green Lab</p></div></div><nav id="nav" class="w-full lg:w-auto flex gap-2 bg-slate-100 rounded-3xl p-2 overflow-x-auto scrollbar"><button class="tabbtn active" data-tab="sim">Runoff sim</button><button class="tabbtn" data-tab="path">Pollution path</button><button class="tabbtn" data-tab="solutions">Solutions</button><button class="tabbtn" data-tab="shop">Smart shop</button><button class="tabbtn" data-tab="quiz">Quiz</button><button class="tabbtn text-amber-700 bg-amber-50" data-tab="gacha"><i class="ti ti-ticket"></i> Vote & gacha</button></nav></div></header>
+<header class="border-b border-slate-100 bg-white sticky top-0 z-30"><div class="max-w-[1500px] mx-auto p-4 md:p-5 flex flex-col lg:flex-row gap-4 items-center justify-between"><div class="flex items-center gap-3"><div class="w-12 h-12 rounded-2xl bg-teal-700 text-white flex items-center justify-center"><i class="ti ti-leaf text-2xl"></i></div><div><h1 class="font-black text-lg leading-tight">A Lab Dedicated To The Ocean.</h1><p class="text-[10px] text-teal-700 font-black tracking-widest uppercase">Urban Green Lab</p></div></div><nav id="nav" class="w-full lg:w-auto flex gap-2 bg-slate-100 rounded-3xl p-2 overflow-x-auto scrollbar"><button class="tabbtn active" data-tab="sim">Runoff Stimulation</button><button class="tabbtn" data-tab="path">Pollution path</button><button class="tabbtn" data-tab="solutions">Solutions</button><button class="tabbtn" data-tab="shop">Smart shop</button><button class="tabbtn" data-tab="quiz">Quiz</button><button class="tabbtn text-amber-700 bg-amber-50" data-tab="gacha"><i class="ti ti-ticket"></i> Vote & gacha</button></nav></div></header>
 <main class="max-w-[1500px] mx-auto w-full p-4 md:p-6">
-<section class="card p-4 md:p-5 mb-6 flex flex-col md:flex-row gap-4 items-center justify-between"><div><h2 class="font-black">Welcome, <span id="displayName" class="text-teal-700">Eco-Scientist</span></h2><p class="text-xs text-slate-500 font-semibold">Type your full name to load your profile and save progress.</p></div><div class="flex gap-2 w-full md:w-auto"><input id="nameInput" class="w-full md:w-72 bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-teal-600" placeholder="Full name"><button id="saveName" class="bg-teal-700 text-white rounded-2xl px-5 py-3 text-xs font-black hover:bg-teal-600">Save name</button></div></section>
+<section class="card p-4 md:p-5 mb-6 flex flex-col md:flex-row gap-4 items-center justify-between"><div><h2 class="font-black">Hello, <span id="displayName" class="text-teal-700">Whoever you are.</span></h2><p class="text-xs text-slate-500 font-semibold">Type your full name to load your profile and save progress.</p></div><div class="flex gap-2 w-full md:w-auto"><input id="nameInput" class="w-full md:w-72 bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-teal-600" placeholder="Full name"><button id="saveName" class="bg-teal-700 text-white rounded-2xl px-5 py-3 text-xs font-black hover:bg-teal-600">Save name</button></div></section>
 
-<section id="sim" class="view grid lg:grid-cols-12 gap-6"><div class="lg:col-span-4 card p-6"><span class="pill bg-teal-50 text-teal-700 border border-teal-100">Causes of urban runoff</span><h3 class="text-2xl font-black mt-3">Rain: sponge or slide?</h3><p class="text-sm text-slate-600 mt-2 leading-7">Rain in a forest sinks into the soil like a sponge, nourishing trees and recharging groundwater. In a city, concrete and asphalt block absorption, so water races across streets and carries pollutants to rivers and oceans.</p><div class="mt-6 grid grid-cols-2 gap-3"><button id="forestBtn" class="env border-2 border-teal-600 bg-teal-50 rounded-2xl p-4 font-black text-sm"><i class="ti ti-trees text-2xl block"></i>Forest</button><button id="cityBtn" class="env border-2 border-slate-200 rounded-2xl p-4 font-black text-sm text-slate-500"><i class="ti ti-building text-2xl block"></i>City</button></div><label class="block mt-6 text-xs font-black text-slate-500 uppercase">Rain intensity <span id="rainLabel" class="text-teal-700">2</span></label><input id="rainSlider" type="range" min="1" max="5" value="2" class="w-full accent-teal-700"><div class="mt-6 bg-slate-50 border border-slate-200 rounded-2xl p-4"><p class="text-xs font-black text-slate-500 uppercase">Infiltration</p><p id="infil" class="text-4xl font-black text-slate-900">50%</p><div class="h-3 bg-slate-200 rounded-full mt-2 overflow-hidden"><div id="infilBar" class="h-full bg-teal-600 rounded-full" style="width:50%"></div></div></div></div><div class="lg:col-span-8 relative overflow-hidden rounded-[32px] bg-slate-900 h-[520px] border border-slate-200 shadow-xl"><div id="rainBox" class="absolute inset-0"></div><div id="runoffFlow"></div><div id="ground" class="absolute bottom-0 inset-x-0 h-28 bg-emerald-900 border-t border-emerald-600"></div><div class="absolute top-6 left-6 right-6 flex justify-between items-start"><span id="envTag" class="pill bg-white/10 text-teal-200 border border-white/10">Natural forest</span><span id="oceanTag" class="pill bg-white/10 text-white border border-white/10">Ocean: Pristine</span></div><div class="absolute left-6 right-6 bottom-6 bg-slate-950/80 text-white rounded-3xl p-6 border border-white/10"><h3 id="simTitle" class="font-black text-xl">Forest infiltration system</h3><p id="simDesc" class="text-sm text-slate-300 mt-2">Natural landscapes allow about 50% infiltration. Roots and soil slow the water and filter it.</p></div></div></section>
+<section id="sim" class="view grid lg:grid-cols-12 gap-6"><div class="lg:col-span-4 card p-6"><span class="pill bg-teal-50 text-teal-700 border border-teal-100">Causes of urban runoff</span><h3 class="text-2xl font-black mt-3">Rain: sponge or slide?</h3><p class="text-sm text-slate-600 mt-2 leading-7">Rain in a forest sinks into the soil like a sponge, nourishing trees and recharging groundwater, also preventing runoff. In a city, concrete and asphalt block absorption, so water races across streets and carries pollutants like trash and chemicals to rivers and oceans.</p><div class="mt-6 grid grid-cols-2 gap-3"><button id="forestBtn" class="env border-2 border-teal-600 bg-teal-50 rounded-2xl p-4 font-black text-sm"><i class="ti ti-trees text-2xl block"></i>Forest</button><button id="cityBtn" class="env border-2 border-slate-200 rounded-2xl p-4 font-black text-sm text-slate-500"><i class="ti ti-building text-2xl block"></i>City</button></div><label class="block mt-6 text-xs font-black text-slate-500 uppercase">Rain intensity <span id="rainLabel" class="text-teal-700">2</span></label><input id="rainSlider" type="range" min="1" max="5" value="2" class="w-full accent-teal-700"><div class="mt-6 bg-slate-50 border border-slate-200 rounded-2xl p-4"><p class="text-xs font-black text-slate-500 uppercase">Infiltration</p><p id="infil" class="text-4xl font-black text-slate-900">50%</p><div class="h-3 bg-slate-200 rounded-full mt-2 overflow-hidden"><div id="infilBar" class="h-full bg-teal-600 rounded-full" style="width:50%"></div></div></div></div><div class="lg:col-span-8 relative overflow-hidden rounded-[32px] bg-slate-900 h-[520px] border border-slate-200 shadow-xl"><div id="rainBox" class="absolute inset-0"></div><div id="runoffFlow"></div><div id="ground" class="absolute bottom-0 inset-x-0 h-28 bg-emerald-900 border-t border-emerald-600"></div><div class="absolute top-6 left-6 right-6 flex justify-between items-start"><span id="envTag" class="pill bg-white/10 text-teal-200 border border-white/10">Natural forest</span><span id="oceanTag" class="pill bg-white/10 text-white border border-white/10">Ocean: Pristine</span></div><div class="absolute left-6 right-6 bottom-6 bg-slate-950/80 text-white rounded-3xl p-6 border border-white/10"><h3 id="simTitle" class="font-black text-xl">Forest infiltration system</h3><p id="simDesc" class="text-sm text-slate-300 mt-2">Natural landscapes allow about 50% infiltration. Roots and soil slow the water and filter it.</p></div></div></section>
 
 <section id="path" class="view hidden card p-6 md:p-8"><div class="text-center"><span class="pill bg-teal-50 text-teal-700 border border-teal-100">Path of pollution</span><h3 class="text-2xl font-black mt-3">Illustrated pollutant journey</h3></div><div class="flex flex-wrap justify-center gap-3 my-7"><button class="pathBtn bg-slate-100 hover:bg-slate-200 rounded-2xl px-5 py-3 text-xs font-black" data-kind="detergents">Detergents</button><button class="pathBtn bg-slate-100 hover:bg-slate-200 rounded-2xl px-5 py-3 text-xs font-black" data-kind="fertilizers">Fertilizers</button><button class="pathBtn bg-slate-100 hover:bg-slate-200 rounded-2xl px-5 py-3 text-xs font-black" data-kind="pesticides">Pesticides</button></div><div id="pathBox" class="bg-slate-50 border border-slate-200 rounded-3xl p-5 md:p-8 min-h-[280px]"></div></section>
 
@@ -68,10 +68,10 @@
           <div>
             <div class="flex justify-between items-start">
               <span class="w-10 h-10 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-lg"><i class="ti ti-droplet"></i></span>
-              <span class="text-xs bg-emerald-100 text-emerald-800 font-black rounded px-2 py-0.5">USD 30</span>
+              <span class="text-xs bg-emerald-100 text-emerald-800 font-black rounded px-2 py-0.5">HKD 30</span>
             </div>
             <h4 class="font-black text-sm mt-3 text-slate-800">Eco Laundry Detergent</h4>
-            <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">Concentrated liquid blend avoiding harsh phosphates that trigger reef suffocation.</p>
+            <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">Concentrated liquid blend avoiding harsh phosphates that trigger reef suffocation and coral bleaching.</p>
           </div>
           <button onclick="shop('detergent')" class="mt-4 w-full bg-teal-800 hover:bg-teal-700 text-white font-black text-xs py-2 rounded-xl transition-colors">Inspect & Swap</button>
         </div>
@@ -81,10 +81,10 @@
           <div>
             <div class="flex justify-between items-start">
               <span class="w-10 h-10 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-lg"><i class="ti ti-sparkles"></i></span>
-              <span class="text-xs bg-emerald-100 text-emerald-800 font-black rounded px-2 py-0.5">USD 30</span>
+              <span class="text-xs bg-emerald-100 text-emerald-800 font-black rounded px-2 py-0.5">HKD 30</span>
             </div>
             <h4 class="font-black text-sm mt-3 text-slate-800">Eco Powder</h4>
-            <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">Biodegradable chemical-free laundry powder to protect marine habitats.</p>
+            <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">Biodegradable chemical-free laundry powder to protect marine habitats and minimise pollutants.</p>
           </div>
           <button onclick="shop('powder')" class="mt-4 w-full bg-teal-800 hover:bg-teal-700 text-white font-black text-xs py-2 rounded-xl transition-colors">Inspect & Swap</button>
         </div>
@@ -94,10 +94,10 @@
           <div>
             <div class="flex justify-between items-start">
               <span class="w-10 h-10 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-lg"><i class="ti ti-leaf"></i></span>
-              <span class="text-xs bg-emerald-100 text-emerald-800 font-black rounded px-2 py-0.5">USD 30</span>
+              <span class="text-xs bg-emerald-100 text-emerald-800 font-black rounded px-2 py-0.5">HKD 30</span>
             </div>
             <h4 class="font-black text-sm mt-3 text-slate-800">Organic Fertilizer</h4>
-            <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">Slow-release soil solution designed to prevent harmful stormwater nutrient runoff.</p>
+            <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">Slow-release soil solution designed to prevent harmful stormwater nutrient runoff affecting the corals.</p>
           </div>
           <button onclick="shop('fertilizer')" class="mt-4 w-full bg-teal-800 hover:bg-teal-700 text-white font-black text-xs py-2 rounded-xl transition-colors">Inspect & Swap</button>
         </div>
@@ -107,10 +107,10 @@
           <div>
             <div class="flex justify-between items-start">
               <span class="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center font-bold text-lg"><i class="ti ti-flask"></i></span>
-              <span class="text-xs bg-emerald-100 text-emerald-800 font-black rounded px-2 py-0.5">USD 30</span>
+              <span class="text-xs bg-emerald-100 text-emerald-800 font-black rounded px-2 py-0.5">HKD 40</span>
             </div>
             <h4 class="font-black text-sm mt-3 text-teal-900">Essential Oils</h4>
-            <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">Botanical mixtures that dissolve safely. Click to scroll our premium recipes.</p>
+            <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">Botanical mixtures that dissolve safely without any residuces. Click to scroll through our premium recipes.</p>
           </div>
           <button id="oilOpen" class="mt-4 w-full bg-teal-600 hover:bg-teal-700 text-white font-black text-xs py-2 rounded-xl transition-colors">Open Recipe Shelf</button>
         </div>
@@ -120,10 +120,10 @@
           <div>
             <div class="flex justify-between items-start">
               <span class="w-10 h-10 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-lg"><i class="ti ti-wash-dry-1"></i></span>
-              <span class="text-xs bg-emerald-100 text-emerald-800 font-black rounded px-2 py-0.5">USD 30</span>
+              <span class="text-xs bg-emerald-100 text-emerald-800 font-black rounded px-2 py-0.5">HKD 20</span>
             </div>
             <h4 class="font-black text-sm mt-3 text-slate-800">Seaweed Sponge Kit</h4>
-            <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">Naturally harvested loofah and marine flora scrubbers that decompose safely.</p>
+            <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">Naturally harvested loofah and marine flora scrubbers that decompose safely without impacting the ocean.</p>
           </div>
           <button onclick="shop('seaweed')" class="mt-4 w-full bg-teal-800 hover:bg-teal-700 text-white font-black text-xs py-2 rounded-xl transition-colors">Inspect & Swap</button>
         </div>
@@ -133,10 +133,10 @@
           <div>
             <div class="flex justify-between items-start">
               <span class="w-10 h-10 rounded-xl bg-teal-100 text-teal-800 flex items-center justify-center font-bold text-lg"><i class="ti ti-square"></i></span>
-              <span class="text-xs bg-emerald-100 text-emerald-800 font-black rounded px-2 py-0.5">USD 30</span>
+              <span class="text-xs bg-emerald-100 text-emerald-800 font-black rounded px-2 py-0.5">HKD 30</span>
             </div>
-            <h4 class="font-black text-sm mt-3 text-slate-800">Natural Dish Soap</h4>
-            <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">Hand-pressed pure saponified plant oil with real zesty lemon skin extract.</p>
+            <h4 class="font-black text-sm mt-3 text-slate-800">Natural Liquid Dish Soap</h4>
+            <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">Compressed pure saponified plant oil with real zesty lemon skin extract.</p>
           </div>
           <button onclick="shop('dishsoap')" class="mt-4 w-full bg-teal-800 hover:bg-teal-700 text-white font-black text-xs py-2 rounded-xl transition-colors">Inspect & Swap</button>
         </div>
@@ -177,7 +177,7 @@
     <div class="mt-6 space-y-2">
       <p class="text-xs font-black uppercase text-slate-400 tracking-wider">Capsule Rarity Ledger</p>
       <div class="grid grid-cols-2 gap-2 text-xs font-black">
-        <div class="bg-purple-50 text-purple-900 border border-purple-200 rounded-2xl p-3 flex justify-between"><span>💎 XL</span><span>3%</span></div>
+        <div class="bg-purple-50 text-purple-900 border border-purple-200 rounded-2xl p-3 flex justify-between"><span>💎 XL (GRAND PRIZE)</span><span>3%</span></div>
         <div class="bg-amber-50 text-amber-900 border border-amber-200 rounded-2xl p-3 flex justify-between"><span>🌟 L</span><span>7%</span></div>
         <div class="bg-blue-50 text-blue-900 border border-blue-200 rounded-2xl p-3 flex justify-between"><span>🌀 M</span><span>20%</span></div>
         <div class="bg-emerald-50 text-emerald-900 border border-emerald-200 rounded-2xl p-3 flex justify-between"><span>🍃 S</span><span>25%</span></div>
@@ -281,12 +281,12 @@ function renderGacha(){let p=profile(); $('voucherCount').textContent=p?p.vouche
 function pickPrize() {
   let roll = Math.random() * 100, cum = 0;
   const table = [
-    ['💎', 'XL', 3, 'Ocean Heart Crystal'],
+    ['💎', 'XL (GRAND PRIZE!!!)', 3, 'Sea Guardian'],
     ['🌟', 'L', 7, 'Neon Seahorse'],
-    ['🌀', 'M', 20, 'Vortex Filter Core'],
-    ['🍃', 'S', 25, 'Rain Garden Sprout'],
-    ['🪵', 'XS', 25, 'Activated Charcoal Slab'],
-    ['🪨', 'XXS', 20, 'Filter Pebble']
+    ['🌀', 'M', 20, 'Golden Swordfish'],
+    ['🍃', 'S', 25, 'Jellyfish'],
+    ['🪵', 'XS', 25, 'Pufferfish'],
+    ['🪨', 'XXS', 20, 'Sardine']
   ];
   for (const [emoji, rarity, rate, name] of table) {
     cum += rate;
@@ -294,7 +294,7 @@ function pickPrize() {
       return { emoji, rarity, name, label: `${emoji} ${rarity}: ${name}`, roll: roll.toFixed(2) };
     }
   }
-  return { emoji: '🪨', rarity: 'XXS', name: 'Filter Pebble', label: '🪨 XXS: Filter Pebble', roll: roll.toFixed(2) };
+  return { emoji: '🪨', rarity: 'XXS', name: 'Sardine', label: '🪨 XXS: Sardine', roll: roll.toFixed(2) };
 }
 
 async function startPull(){if(!current) return alert('Save your full name first.'); let p=profile(); if(p.gachaDone) return renderGacha(); if(p.vouchers<1){p.attempts.push({type:'no voucher',time:new Date().toLocaleString()}); await save(); return alert('You need a golden voucher from the quiz first.')} let code=prompt('Staff confirmation required. Please hand the device to our team.'); if(code!==ADMIN_CODE){p.attempts.push({type:'wrong approval',time:new Date().toLocaleString()}); state.logs.push({type:'blocked pull',name:current,time:new Date().toLocaleString()}); await save(); return alert('Pull blocked and marked down. Please vote and get team confirmation first.')} if(!confirm('Use one golden voucher now? This gacha pull is ONE TIME only.')) return; showTicketThenPull(p)}
